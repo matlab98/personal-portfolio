@@ -1,0 +1,23 @@
+.socials-div {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 95vh;
+  width: 12.5%;
+}
+
+.socials-div a {
+  color: var(--text-less-white);
+  opacity: 0.9;
+}
+
+.vertical-line {
+  height: 4rem;
+  width: 0.12rem;
+  border-radius: 10px;
+  background-color: var(--text-less-white);
+  align-self: center;
+  opacity: 0.9;
+  margin-top: 1rem;
+}

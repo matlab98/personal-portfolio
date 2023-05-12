@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Overpass:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800&display=swap");
+
+* {
+  text-decoration: none;
+}
+
+:root {
+  --off-white-brighter: #fefee6;
+  --off-white: #feffd7;
+  --text-less-white: #eeefc4;
+  --brown: #391e17;
+  --blue: #4d5b5b;
+  --in-between-blue: #394242;
+  --darker-blue: #2c3636;
+
+  --container-width-desktop: 75%;
+  --container-width-md: 65%;
+  --container-width-768: 85%;
+  --container-width-phone: 90%;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--blue);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--darker-blue);
+  border-radius: 10em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--in-between-blue);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 16px;
+  color: var(--off-white);
+  margin: 0;
+}
+
+.the-ultimate-wrap {
+  /*background-image: url("../src/assets/New Dan Extended.png");*/
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto 100vh;
+}
+
+.adjusted-wrap {
+  /*background-image: url("../src/assets/New Dan Extended.png");*/
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100vw auto;
+}
+
+a {
+  color: var(--off-white);
+  align-self: center;
+}
+
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 48px;
+  margin: 0;
+  font-weight: 700;
+  text-shadow: 5px 5px 10px rgb(0, 0, 0, 0.3);
+}
+
+h4 {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  margin: 0;
+  font-weight: lighter;
+  text-shadow: 2px 2px 6px rgb(0, 0, 0, 0.4);
+}
+
+h5 {
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 10px rgb(0 0 0 / 60%);
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.container-desktop {
+  width: var(--container-width-desktop);
+  margin: 0 auto;
+
+  /* display: flex;
+    justify-content: space-between; */
+}
+
+.container-md {
+  width: var(--container-width-md);
+  margin: 0 auto;
+}
+
+.min-vh-container {
+  min-height: 100vh;
+}
+
+button {
+  border: 0;
+  background-color: rgb(0, 0, 0, 0);
+  color: var(--off-white);
+  font-weight: bold;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.btn {
+  padding: 10px 25px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: var(--off-white);
+  color: var(--brown);
+}
+
+.btn-secondary {
+  color: rgb(black, black, black, 0);
+  /* keeps border inside element */
+  box-shadow: inset 0px 0px 0px 2px var(--off-white);
+}
+
+.center-me-vert {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center-text {
+  display: flex;
+  justify-content: center;
+}
+
+.margin-h1-bottom {
+  margin-bottom: 2rem;
+}
+
+.margin-h1 {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.color-brown {
+  color: var(--brown);
+}
+
+.text-white {
+  color: var(--off-white);
+}
+
+input:focus {
+  outline: none;
+}
+
+textarea:focus {
+  outline: none;
+}

@@ -1,0 +1,107 @@
+.thumb {
+  width: 20vw;
+  min-width: 15rem;
+  height: auto;
+  border-radius: 5px;
+}
+
+.margin-thumb {
+  margin-right: 10rem;
+}
+
+.fit-height {
+  max-height: 90vh;
+  width: auto;
+  max-width: 80vw;
+  align-self: center;
+}
+
+#projects-div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  flex-wrap: wrap;
+  column-gap: 0.5rem;
+}
+
+.div-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+.margin-card {
+  margin-top: 2rem;
+}
+
+#container-portfolio {
+  background-color: rgb(0, 0, 0, 0.5);
+  min-height: 30vh;
+  padding-top: 10vh;
+  padding-bottom: 15vh;
+}
+
+#portfolio {
+  width: var(--container-width-md);
+  margin: 0 auto;
+}
+
+.modal-style {
+  width: fit-content;
+  max-width: 80vw;
+  height: 100vh;
+  margin: 0 auto;
+  margin-top: 2.5rem;
+  overflow-y: auto;
+}
+
+.overlay-style {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-images {
+  width: 80vw;
+}
+
+.div-close-overlay {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+}
+
+#close-popup-icon {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.btn-tag {
+  border-radius: 5px;
+  padding: 0.5rem 0.8rem 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+}
+
+.inactive {
+  color: rgb(black, black, black, 0);
+  /* keeps border inside element */
+  box-shadow: inset 0px 0px 0px 1.5px var(--off-white);
+}
+.active {
+  background-color: var(--off-white);
+  color: var(--brown);
+}
+
+@media (max-width: 768px) {
+  #portfolio {
+    width: var(--container-width-768);
+    margin: 0 auto;
+  }
+}

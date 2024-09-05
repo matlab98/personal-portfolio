@@ -1,15 +1,29 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { I18nextProvider } from "react-i18next";
-import i18n from "i18next";
-import App from "./containers/App";
-import "./styles/index.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
+import App from './containers/app';
+import Error from './error/E404';
+import './styles/styles.css';
+import './styles/responsive-style.css';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <I18nextProvider i18n={i18n}>
-      <App />
-    </I18nextProvider>
-  </React.StrictMode>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={App} />
+        <Route exact path="/error" component={Error} status={404} />
+        <Redirect from="*"
+          to="/error"
+        />
+        <Route path="*" exact={true} component={Error} />
+
+      </Switch>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

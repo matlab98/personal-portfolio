@@ -1,21 +1,27 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/auth'
+import { initializeApp } from "firebase/app";
+import { collection, getDocs, getFirestore } from "firebase/firestore/lite";
+
+const env = process.env;
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDCHj8v7mV66PS2ksGMUdUvoao1bwhvb0c",
-    authDomain: "sistema-alfa-84c19.firebaseapp.com",
-    projectId: "sistema-alfa-84c19",
-    storageBucket: "sistema-alfa-84c19.appspot.com",
-    messagingSenderId: "527837409519",
-    appId: "1:527837409519:web:558dbc412f00871d9aeb1a",
-    measurementId: "G-SV7KWHB929"
+  apiKey: env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: env.REACT_APP_FIREBASE_MEASURE_ID
 };
 
-firebase.initializeApp(firebaseConfig)
-const db = firebase.firestore()
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-export {
-    db,
-    firebase
+async function getCities(db) {
+  const data = collection(db, "0001");
+  const snapshot = await getDocs(data);
+
+  
+  return snapshot;
 }
+
+export { app, db, getCities };

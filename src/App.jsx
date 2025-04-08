@@ -23,6 +23,7 @@ function App() {
   const Portfolio = React.lazy(() => import("./components/project"));
   const Service = React.lazy(() => import("./components/service"));
   // const Touch = React.lazy(() => import("./features/touch/Touch"));
+  const Footer = React.lazy(() => import("./features/footer/components/footer"));
 
   const [dato, setDato] = useState([]);
 
@@ -108,21 +109,21 @@ function App() {
                 {/*                 <Suspense fallback={<div>Cargando...</div>}>
                   <Stats status={mode} />
                 </Suspense> */}
-                <Suspense fallback={<div>Cargando...</div>}>
+                {/* <Suspense fallback={<div>Cargando...</div>}>
                   <Service service={data["services"]} />
                 </Suspense>
                 <Suspense fallback={<div>Cargando...</div>}>
                   <Portfolio project={data["portfolio"]} />
-                </Suspense>
+                </Suspense> */}
                 {/* <Suspense fallback={<div>Cargando...</div>}>
                   <Touch email={data["email"]} />
                 </Suspense> */}
                 <Suspense fallback={<div>Cargando...</div>}>
-                  {/*<Footer
+                  <Footer
                     cel={data["cel"]}
                     social={data["socialN"]}
                     loc={data["location"]}
-                  />*/}
+                  />
                 </Suspense>
               </div>
             );

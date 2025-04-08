@@ -11,6 +11,7 @@ import store from "./app/store.js";
 import Error from './error/E404.jsx';
 import './styles/responsive-style.css';
 import './styles/styles.css';
+import './i18n'; // 👈 Importación obligatoria aquí
 
 import App from './App.jsx';
 

@@ -1,0 +1,10 @@
+{
+  "greeting": "Hey, I'm FullStack Developer",
+  "download_cv": "Download CV",
+  "hire_me": "Hire me",
+
+  "footer": {
+    "made_with": "Build from scratch with",
+    "by": "by Hilder Arrieta"
+  }
+ }

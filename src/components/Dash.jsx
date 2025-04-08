@@ -20,16 +20,7 @@ const Banner = ({ resume, cv, status }) => {
     return language;
   };
 
-  function AP(dato) {
-    return (
-      <Particles
-        id="particles-js"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={dato}
-      />
-    );
-  }
+
 detectLanguage();
   function Main() {
     return (
@@ -60,20 +51,10 @@ detectLanguage();
     );
   }
 
-  if (status === "false") {
     return (
       <section id="main">
-        <AP {...Opt("#000000")} />
-        <Main />
+       <Main />
       </section>
     );
-  } else {
-    return (
-      <section id="main">
-        <AP {...Opt("#ffffff")} />
-        <Main />
-      </section>
-    );
-  }
 };
 export default Banner;

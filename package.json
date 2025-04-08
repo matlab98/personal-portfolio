@@ -11,7 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@iconify-icons/fa": "^1.1.0",
     "@iconify/react": "^1.1.4",
-    "@reduxjs/toolkit": "^2.2.7",
+    "@reduxjs/toolkit": "^2.6.1",
     "antd": "^5.4.7",
     "axios-jsonp-pro": "^1.1.8",
     "crypto-browserify": "^3.12.0",

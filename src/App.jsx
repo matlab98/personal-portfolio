@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import Main from "./components/Dash";
 
-import Footer from "./components/Footer";
+//import Footer from "./components/Footer";
 
 import AskAi from "./features/containers/AskAi";
 
@@ -15,7 +15,7 @@ import {
 } from "./hooks/useLocalStorage";
 
 function App() {
-  const Introduction = React.lazy(() => import("./components/Introduction"));
+  const Introduction = React.lazy(() => import("./components/introduction"));
   const Education = React.lazy(() => import("./components/HV/education"));
 
   /*   const Stats = React.lazy(() => import("./components/experience/stats")); */
@@ -39,7 +39,7 @@ function App() {
   const Body = document.documentElement;
   useEffect(() => {
     fetchData();
-    const isDarkMode = getLocalStorageItem("dark-mode");
+    const isDarkMode = getLocalStorageItem("dark-mode") ?? "false";
     const theme = isDarkMode ? "dark" : "light";
 
     // Configurar el tema y el modo en localStorage y el documento
@@ -104,9 +104,6 @@ function App() {
                 <Suspense fallback={<div>Cargando...</div>}>
                   <Introduction intro={data["introduction"]} />
                 </Suspense>
-                <Suspense fallback={<div>Cargando...</div>}>
-                  <Education education={data["Education"]} />
-                </Suspense>
                 {/*                 <Suspense fallback={<div>Cargando...</div>}>
                   <Stats status={mode} />
                 </Suspense> */}
@@ -120,11 +117,11 @@ function App() {
                   <Touch email={data["email"]} />
                 </Suspense>
                 <Suspense fallback={<div>Cargando...</div>}>
-                  <Footer
+                  {/*<Footer
                     cel={data["cel"]}
                     social={data["socialN"]}
                     loc={data["location"]}
-                  />
+                  />*/}
                 </Suspense>
               </div>
             );

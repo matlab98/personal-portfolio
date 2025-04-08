@@ -1,0 +1,33 @@
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.section-container {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.section-container > div {
+    max-width: 800px;
+    text-align: center;
+}
+
+.section-container h2 {
+    color: #4ff0b7;
+    font-family: "Azeret Mono", monospace;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-container p {
+    font-size: 20px;
+    color: #333;
+}
+

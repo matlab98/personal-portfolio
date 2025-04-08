@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { api } from '../features/services/statistics'; // Importa el archivo donde definirás el API
+import { api } from '../features/metric/services/statistics'; // Importa el archivo donde definirás el API
 
 const store = configureStore({
   reducer: {

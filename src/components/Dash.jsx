@@ -1,13 +1,6 @@
 import React from "react";
-import Particles from "react-tsparticles";
-import Opt from "../files/configuration";
 
-const Banner = ({ resume, cv, status }) => {
-
-  const particlesInit = () => {};
-
-  const particlesLoaded = () => {};
-
+const intro = ({ resume, cv, status }) => {
   const detectLanguage = () => {
     // `navigator.language` devuelve el lenguaje preferido del usuario
     const language = navigator.language || navigator.userLanguage; // para compatibilidad con navegadores más antiguos
@@ -20,11 +13,10 @@ const Banner = ({ resume, cv, status }) => {
     return language;
   };
 
-
 detectLanguage();
-  function Main() {
+
     return (
-      <>
+      <section id="main">
         <div className="main-text">
           <h1>Hey, Yo soy FullStack Developer</h1>
           <p className="description">{resume}</p>
@@ -47,14 +39,8 @@ detectLanguage();
             />
           </div>
         </div>
-      </>
-    );
-  }
-
-    return (
-      <section id="main">
-       <Main />
       </section>
     );
 };
-export default Banner;
+
+export default intro;

@@ -6,22 +6,23 @@ import Main from "./components/Dash";
 
 //import Footer from "./components/Footer";
 
-import AskAi from "./features/containers/AskAi";
+import AskAi from "./features/metric/containers/AskAi";
 
 import { db, getCities } from "./firebase/firebase.config";
+
 import {
   getLocalStorageItem,
   setLocalStorageItem,
 } from "./hooks/useLocalStorage";
 
 function App() {
-  const Introduction = React.lazy(() => import("./components/introduction"));
+  const Introduction = React.lazy(() => import("./features/intro/introduction"));
   const Education = React.lazy(() => import("./components/HV/education"));
 
   /*   const Stats = React.lazy(() => import("./components/experience/stats")); */
   const Portfolio = React.lazy(() => import("./components/project"));
   const Service = React.lazy(() => import("./components/service"));
-  const Touch = React.lazy(() => import("./features/touch/Touch"));
+  // const Touch = React.lazy(() => import("./features/touch/Touch"));
 
   const [dato, setDato] = useState([]);
 
@@ -65,7 +66,7 @@ function App() {
           dato.map((data, id) => {
             return (
               <div key={id}>
-                <nav className="navigation">
+                {/* <nav className="navigation">
                   <a href="{#}" className="logo">
                     <img
                       src="https://res.cloudinary.com/dpykpv9hd/image/upload/v1628388753/dsn8q08orztuibj1xycc.png"
@@ -98,7 +99,7 @@ function App() {
                   <div className="switch" data-isOn={mode} onClick={change}>
                     <motion.div className="handle" layout transition={spring} />
                   </div>
-                </nav>
+                </nav> */}
                 <Main resume={data["resume"]} cv={data["CV"]} status={mode} />
 
                 <Suspense fallback={<div>Cargando...</div>}>
@@ -113,9 +114,9 @@ function App() {
                 <Suspense fallback={<div>Cargando...</div>}>
                   <Portfolio project={data["portfolio"]} />
                 </Suspense>
-                <Suspense fallback={<div>Cargando...</div>}>
+                {/* <Suspense fallback={<div>Cargando...</div>}>
                   <Touch email={data["email"]} />
-                </Suspense>
+                </Suspense> */}
                 <Suspense fallback={<div>Cargando...</div>}>
                   {/*<Footer
                     cel={data["cel"]}

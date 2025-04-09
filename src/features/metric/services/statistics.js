@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { urlStats } from "./../../../config/config";
 
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://wakatime.com/share/@hilbrakaku/",
+    baseUrl: urlStats.baseStatsUrl,
   }), // Cambia esto por la URL de tu API
   endpoints: (builder) => ({
     queryOne: builder.query({
@@ -23,7 +24,7 @@ export const api = createApi({
     }),
     queryTwo: builder.query({
       query: () => ({
-        url: "eea4d614-7178-46fa-8828-54ef59996ac1.json", // Cambia esto por el endpoint que necesites
+        url: urlStats.statsLanguage, // Cambia esto por el endpoint que necesites
         method: "GET",
       }),
       transformResponse: (response) => {
@@ -53,7 +54,7 @@ export const api = createApi({
     }),
     queryFour: builder.query({
       query: () => ({
-        url: "96dd4b3d-19f6-4f40-8637-facf512c41a1.json", // Cambia esto por el endpoint que necesites
+        url: urlStats.statsTotal, // Cambia esto por el endpoint que necesites
         method: "GET",
       }),
       transformResponse: (response) => {

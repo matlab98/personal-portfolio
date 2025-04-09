@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './style.css'; // o podés usar styled-components
+import './style.css';
 
 const ScrollBar = () => {
   const [progress, setProgress] = useState(0);

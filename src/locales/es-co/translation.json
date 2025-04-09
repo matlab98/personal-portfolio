@@ -10,6 +10,16 @@
     "title": "Mis servicios",
     "description": "Ofrezco una amplia gama de servicios para satisfacer sus necesidades."
   },
+    "contact": {
+      "title": "Contáctame",
+      "subtitle": "Es tiempo de conocernos. Si te interesa mi trabajo, escríbeme y hablamos de tu proyecto.",
+      "name": "Tu nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "submit": "Enviar",
+      "success": "¡Gracias! Te contactaré pronto.",
+      "error": "Algo salió mal. Intenta de nuevo."
+    },
   "footer": {
     "made_with": "Hecho con mucho",
     "by": "por Hilder Arrieta"

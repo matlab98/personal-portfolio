@@ -4,7 +4,7 @@ import Main from "./components/Dash";
 //import Footer from "./components/Footer";
 import AskAi from "./features/metric/containers/stats";
 import ScrollBar from "./components/scrollBar/scrollBar";
-import { db, getCities } from "./firebase/firebase.config";
+import { getCollectionData } from "./firebase/firebase.config";
 import MetricDashBoard from "./containers/MetricDashboard";
 
 import {
@@ -18,15 +18,14 @@ function App() {
   const Stats = React.lazy(() => import("./features/metric/containers/stats"));
   const Portfolio = React.lazy(() => import("./features/portfolio/project"));
   const Service = React.lazy(() => import("./features/service/service"));
-  // const Touch = React.lazy(() => import("./features/touch/Touch"));
+   const Touch = React.lazy(() => import("./features/touch/Touch"));
   const Footer = React.lazy(() => import("./features/footer/components/footer"));
 
   const [dato, setDato] = useState([]);
   const [mode, setMode] = useState(getLocalStorageItem("dark-mode"));
-  const [isOn, setIsOn] = useState(false);
 
   const fetchData = useCallback(async () => {
-    const data = await getCities(db);
+    const data = await getCollectionData();
     const info = data.docs.map((item) => item.data());
     setDato(info);
   }, []);
@@ -74,7 +73,7 @@ function App() {
     <div id="example">
       {dato.map((data, id) => (
         <>
-          <section className="section-container">
+          <section key={id} className="section-container">
             <div ref={ref}>
               <Suspense fallback={null}>
                 <Introduction intro={data["introduction"]} />
@@ -100,6 +99,24 @@ function App() {
               <Suspense fallback={null}>
                 <MetricDashBoard />
                  <Stats status={mode} /> 
+              </Suspense>
+            </div>
+          </section>
+          <section className="section-container">
+            <div ref={ref}>
+              <Suspense fallback={null}>
+              <Touch email={data["email"]} />
+              </Suspense>
+            </div>
+          </section>
+          <section className="section-container">
+            <div ref={ref}>
+              <Suspense fallback={null}>
+              <Footer
+                   cel={data["cel"]}
+                   social={data["socialN"]}
+                   loc={data["location"]}
+                />
               </Suspense>
             </div>
           </section>

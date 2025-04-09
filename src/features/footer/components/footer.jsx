@@ -12,7 +12,7 @@ const Footer = ({ cel, social, loc }) => {
     <footer>
   <div className="footer-content">
     <span className="footer-text">
-      {t('footer.made_with')} <i className="fa fa-heart"></i> {t('footer.by')}. &copy; {new Date().getFullYear()}
+      {t('footer.made_with')} ❤️ {t('footer.by')}. &copy; {new Date().getFullYear()}
     </span>
 
     <div className="footer-social">

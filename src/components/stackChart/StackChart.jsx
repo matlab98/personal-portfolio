@@ -60,7 +60,7 @@ const StackChart = ({ data }) => {
   return (
     <section className="chart-section">
       <h2 className="chart-title">Lenguajes Más Usados</h2>
-      <ResponsiveContainer width="100%" height={500}>
+      <ResponsiveContainer width="100%" height={300}>
         <RadarChart data={topLanguages}>
           <PolarGrid />
           <PolarAngleAxis dataKey="name" />

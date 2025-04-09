@@ -82,6 +82,7 @@ html {
 
 .section-container {
   height: 100vh;
+  min-height: 100vh;
   scroll-snap-align: start;
   display: flex;
   justify-content: center;
@@ -89,6 +90,8 @@ html {
   padding: 2rem;
   box-sizing: border-box;
   position: relative;
+  overflow: hidden;
+  padding: 0 2rem;
 }
 
 .section-container > div {

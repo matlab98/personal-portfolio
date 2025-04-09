@@ -22,8 +22,18 @@
       "description": "Designing user-friendly interfaces."
     }
   },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "It's time to know us. If you're interested in my work, write me and let's talk.",
+    "name": "Your name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send",
+    "success": "Thank you! I’ll get back to you soon.",
+    "error": "Something went wrong. Please try again."
+  },
   "footer": {
     "made_with": "Build from scratch with",
     "by": "by Hilder Arrieta"
   }
- }
+}

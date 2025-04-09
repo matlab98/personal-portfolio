@@ -6,8 +6,8 @@ import translationEN from './locales/en-us/translation.json';
 import translationES from './locales/es-co/translation.json';
 
 const resources = {
-  'en': { translation: translationEN },
-  'es': { translation: translationES },
+  'en-US': { translation: translationEN },
+  'es-CO': { translation: translationES },
 };
 
 i18n
@@ -15,8 +15,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'en',
-    supportedLngs: ['en', 'es'],
+    fallbackLng: 'en-US',
+    supportedLngs: ['en-US', 'es-CO'],
     detection: {
       order: ['path', 'navigator'],
       lookupFromPathIndex: 0

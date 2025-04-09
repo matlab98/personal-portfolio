@@ -30,7 +30,6 @@ const AutoRedirect = () => {
 // Wrapper que aplica el idioma de la URL
 const LangRouter = () => {
   const { lang } = useParams();
-  console.log('Idioma actual:', i18n.language);
 
   React.useEffect(() => {
     if (i18n.language !== lang) {

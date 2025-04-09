@@ -1,7 +1,7 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
-import './Parallax.css'
+import './style.css'
 
 
 const metrics = [
@@ -18,10 +18,10 @@ const MetricCard = ({ label, value, delay }) => (
     transition={{ duration: 0.6, delay }}
     viewport={{ once: true }}
   >
-    <h2 className="metric-value">
+    <h3 className="metric-value">
       <CountUp end={value} duration={2} separator="," />
       {label.includes('Años') && '+'}
-    </h2>
+    </h3>
     <p className="metric-label">{label}</p>
   </motion.div>
 );

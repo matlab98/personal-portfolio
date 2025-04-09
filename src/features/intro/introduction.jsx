@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 const Introduction = ({ intro }) => {
 const { t } = useTranslation();
-
+console.log('Idioma actual:', t('intro.whoami'));
   const hasVideo = !!intro?.link;
 
   return (

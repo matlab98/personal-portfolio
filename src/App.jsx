@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef, Suspense, useCallback } from "react
 
 import Main from "./components/Dash";
 //import Footer from "./components/Footer";
-import AskAi from "./features/metric/containers/AskAi";
+import AskAi from "./features/metric/containers/stats";
 import ScrollBar from "./components/scrollBar/scrollBar";
 import { db, getCities } from "./firebase/firebase.config";
-import Parallax from "./containers/Parallax"
+import MetricDashBoard from "./containers/MetricDashboard";
+
 import {
   getLocalStorageItem,
   setLocalStorageItem,
@@ -14,9 +15,9 @@ import {
 function App() {
   const Introduction = React.lazy(() => import("./features/intro/introduction"));
   const Education = React.lazy(() => import("./components/HV/education"));
-  /*   const Stats = React.lazy(() => import("./components/experience/stats")); */
-  const Portfolio = React.lazy(() => import("./components/project"));
-  const Service = React.lazy(() => import("./components/service"));
+  const Stats = React.lazy(() => import("./features/metric/containers/stats"));
+  const Portfolio = React.lazy(() => import("./features/portfolio/project"));
+  const Service = React.lazy(() => import("./features/service/service"));
   // const Touch = React.lazy(() => import("./features/touch/Touch"));
   const Footer = React.lazy(() => import("./features/footer/components/footer"));
 
@@ -70,36 +71,43 @@ function App() {
 
   return <>
     <ScrollBar />
-
     <div id="example">
       {dato.map((data, id) => (
         <>
-        <section className="section-container">
-          <div ref={ref}>
-            <Suspense fallback={null}>
-              <Introduction intro={data["introduction"]} />
-            </Suspense>
-          </div>
-        </section>
-        <section className="section-container">
-        <div ref={ref}>
-          <Suspense fallback={null}>
-             <Service service={data["services"]} />
-          </Suspense>
-        </div>
-      </section>
-      <section className="section-container">
-        <div ref={ref}>
-          <Suspense fallback={null}>
-            <Portfolio project={data["portfolio"]} />
-          </Suspense>
-        </div>
-      </section>
-      </>
+          <section className="section-container">
+            <div ref={ref}>
+              <Suspense fallback={null}>
+                <Introduction intro={data["introduction"]} />
+              </Suspense>
+            </div>
+          </section>
+          <section className="section-container">
+            <div ref={ref}>
+              <Suspense fallback={null}>
+                <Service service={data["services"]} />
+              </Suspense>
+            </div>
+          </section>
+          <section className="section-container">
+            <div ref={ref}>
+              <Suspense fallback={null}>
+                <Portfolio project={data["portfolio"]} />
+              </Suspense>
+            </div>
+          </section>
+          <section className="section-container">
+            <div ref={ref}>
+              <Suspense fallback={null}>
+                <MetricDashBoard />
+                 <Stats status={mode} /> 
+              </Suspense>
+            </div>
+          </section>
+        </>
       ))
       }
 
-  {/*     {sections.map((sec) => (
+      {/*     {sections.map((sec) => (
         <section className="section-container">
           <div ref={ref}>
             <p>{sec.content}</p>

@@ -30,7 +30,7 @@ export const api = createApi({
         return {
           status: true,
           statusDescription: "Query completed successfully.",
-          data: response[0].data,
+          data: response.data,
         };
       },
       transformErrorResponse: (response) => response?.data,
@@ -45,7 +45,7 @@ export const api = createApi({
         return {
           status: true,
           statusDescription: "Query completed successfully.",
-          data: response[0].data,
+          data: response.data,
         };
       },
       transformErrorResponse: (response) => response?.data,
@@ -60,7 +60,7 @@ export const api = createApi({
         return {
           status: true,
           statusDescription: "Query completed successfully.",
-          data: response[0].data,
+          data: response.data,
         };
       },
       transformErrorResponse: (response) => response?.data,

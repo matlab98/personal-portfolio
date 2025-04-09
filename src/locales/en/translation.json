@@ -2,7 +2,10 @@
   "greeting": "Hey, I'm FullStack Developer",
   "download_cv": "Download CV",
   "hire_me": "Hire me",
-
+  "intro": {
+    "whoami": "Who am I?",
+    "description": "I'm an engineer passionate about technology, always seeking efficient and creative solutions."
+  },
   "footer": {
     "made_with": "Build from scratch with",
     "by": "by Hilder Arrieta"

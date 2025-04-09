@@ -74,33 +74,34 @@ function App() {
       </div>
     );
   }
-  
-    return <>
-      <ScrollBar />
 
-      <div id="example">
-        {dato.map((data, id) => (
-          <section className="section-container">
-            <div ref={ref}>
-              <motion.h2>Who am I?</motion.h2>
-              <Suspense fallback={<div>Cargando...</div>}>
-                <Introduction intro={data["introduction"]} />
-              </Suspense>
-            </div>
-          </section>))
-        }
+  return <>
+    <ScrollBar />
 
-        {sections.map((sec) => (
-          <section className="section-container">
-            <div ref={ref}>
-              <p>{sec.content}</p>
-            </div>
-          </section>
-        )
-        )}
-      </div>
-    </>
-  
+    <div id="example">
+      {dato.map((data, id) => (
+        <section className="section-container">
+          <div ref={ref}>
+            
+            <Suspense fallback={null}>
+              <Introduction intro={data["introduction"]} />
+            </Suspense>
+
+          </div>
+        </section>))
+      }
+
+      {sections.map((sec) => (
+        <section className="section-container">
+          <div ref={ref}>
+            <p>{sec.content}</p>
+          </div>
+        </section>
+      )
+      )}
+    </div>
+  </>
+
 
 
 

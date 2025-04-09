@@ -1,185 +1,142 @@
 import React, { useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { Link } from "react-router-dom";
-const Project = (props) => {
-  const modal = (Title, Text, Image, Url) => {
+import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
+
+const Project = ({ project }) => {
+const { t } = useTranslation();
+
+  const modal = (title, text, image, url) => {
     Swal.fire({
-      title: Title,
-      text: Text,
-      imageUrl: Image,
+      title,
+      text,
+      imageUrl: image,
       imageWidth: 400,
       imageHeight: 200,
-      imageAlt: Url,
+      imageAlt: url,
       showCloseButton: true,
-      confirmButtonText: `<a class="buttonText" href=${Url}>Ver</a>`,
+      confirmButtonHtml: `<a class="buttonText" href="${url}" target="_blank" rel="noopener noreferrer">Ver</a>`,
+    });
+  };
+
+  const filterSelection = (category) => {
+    const elements = document.getElementsByClassName('dev-project');
+    Array.from(elements).forEach((el) => {
+      el.classList.remove('show');
+      if (category === 'all' || el.classList.contains(category)) {
+        el.classList.add('show');
+      }
     });
   };
 
   useEffect(() => {
-    if(document.getElementById(0).classList.value === 'btn-project active'){
-      filterSelection('all');
-    }
-    var btnContainer = document.getElementById('btnContainer');
-    var btns = btnContainer.getElementsByClassName('btn-project');
-    for (const value of btns) {
-      value.addEventListener('click', function () {
-        var current = document.getElementsByClassName('active');
-        current[0].className = current[0].className.replace(' active', '');
-        this.className += ' active';
-      });
-    }
-  });
+    const btns = document.querySelectorAll('#btnContainer .btn-project');
 
-  function filterSelection(c) {
-    var x, i;
-    x = document.getElementsByClassName('dev-project');
-    if (c == 'all') c = '';
-    for (i = 0; i < x.length; i++) {
-      removeClass(x[i], 'show');
-      if (x[i].className.indexOf(c) > -1) addClass(x[i], 'show');
-    }
-  }
+    const handleClick = (e) => {
+      document.querySelector('.btn-project.active')?.classList.remove('active');
+      e.currentTarget.classList.add('active');
+    };
 
-  function addClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(' ');
-    arr2 = name.split(' ');
-    for (i = 0; i < arr2.length; i++) {
-      if (arr1.indexOf(arr2[i]) == -1) {
-        element.className += ' ' + arr2[i];
-      }
-    }
-  }
+    btns.forEach((btn) => btn.addEventListener('click', handleClick));
 
-  function removeClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(' ');
-    arr2 = name.split(' ');
-    for (i = 0; i < arr2.length; i++) {
-      while (arr1.indexOf(arr2[i]) > -1) {
-        arr1.splice(arr1.indexOf(arr2[i]), 1);
-      }
-    }
-    element.className = arr1.join(' ');
-  }
+    // Selección inicial
+    filterSelection('all');
+
+    // Cleanup
+    return () => {
+      btns.forEach((btn) => btn.removeEventListener('click', handleClick));
+    };
+  }, []);
+
+  const categories = [
+    { id: 0, label: "Todos", type: "all", count: "06", icon: "fa fa-tasks" },
+    { id: 1, label: "FrontEnd", type: "FrontEnd", count: "06" },
+    { id: 2, label: "BackEnd", type: "BackEnd", count: "03" },
+    { id: 3, label: "Automatización", type: "Automation", count: "02" },
+    { id: 4, label: "Devops", type: "Devops", count: "02" }
+  ];
 
   return (
-    <section id="portfolio" className="format-section">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-12 col-sm-12 col-xs-12">
-            <div className="heading">
-              <strong className="sect-title">
-                <span>Mi portafolio</span>
-                <i className="heading-logo project-logo"></i>
-              </strong>
-              <p>Estos son todos los proyectos que he realizado hasta ahora.</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-12 col-sm-12 col-xs-12">
-            <div className="portfolio-nav">
-              <ul id="btnContainer">
-                <li
-                  className="btn-project active"
-                  id="0"
-                  onClick={() => filterSelection('all')}
-                >
-                  <span>06</span>
-                  <i className="fa fa-tasks"></i>Todos
-                </li>
-                <li
-                  className="btn-project"
-                  id="1"
-                  onClick={() => filterSelection('FrontEnd')}
-                >
-                  <span>06</span>
-                  FrontEnd
-                </li>
-                <li
-                  className="btn-project"
-                  id="2"
-                  onClick={() => filterSelection('BackEnd')}
-                >
-                  <span>03</span>
-                  BackEnd
-                </li>
-                <li
-                  className="btn-project"
-                  id="3"
-                  onClick={() => filterSelection('Automation')}
-                >
-                  <span>02</span>
-                  Automatización
-                </li>
-                <li
-                  className="btn-project"
-                  id="4"
-                  onClick={() => filterSelection('Devops')}
-                >
-                  <span>02</span>
-                  Devops
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="portfolio-inner">
-          <div className="row stylex">
-            <div className="isotop-active">
-              {props['project'].map((a, i) => {
-                return (
-                  <div
-                    key={i}
-                    className={`mix development html5 col-md-4 col-sm-6 col-xs-12 col-fix dev-project ${a.type}`}
-                  >
-                    <div className="portfolio-single">
-                      <div className="portfolio-head">
-                        <img src={a.cover_page} alt="" />
-                      </div>
-                      <div className="portfolio-hover">
-                        <h4>
-                          <a href={a.link}>{a.name_project}</a>
-                        </h4>
-
-                        <div className="button">
-                          <a
-                            data-fancybox="gallery"
-                            onClick={() => {
-                              modal(
-                                a.name_project,
-                                a.description,
-                                a.cover_page,
-                                a.link
-                              );
-                            }}
-                          >
-                            <i className="fa fa-search"></i>
-                          </a>
-                          <a href={a.link} className="primary">
-                            <i className="fa fa-link"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="button">
-            <Link to="/portfolio-full-width" className="btn">
-              Más Proyectos<i className="fa fa-angle-double-right"></i>
-            </Link>
+    
+    <motion.section
+    id="portfolio"
+    className="format-section"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+  >
+    <div className="container-fluid">
+      <div className="row">
+        <div className="col-12">
+          <div className="heading">
+            <motion.h2>
+              Mis proyectos
+            </motion.h2>
           </div>
         </div>
       </div>
-    </section>
+
+      <div className="row">
+        <div className="col-12">
+          <div className="portfolio-nav">
+            <ul id="btnContainer">
+              {categories.map(({ id, label, type, count, icon }) => (
+                <li
+                  key={id}
+                  className={`btn-project ${id === 0 ? 'active' : ''}`}
+                  onClick={() => filterSelection(type)}
+                >
+                  <span>{count}</span>
+                  {icon ? <i className={icon}></i> : null}
+                  {label}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="portfolio-inner">
+        <div className="row stylex">
+          <div className="isotop-active">
+            {project.map((a, i) => (
+              <div
+                key={i}
+                className={`mix development html5 col-md-4 col-sm-6 col-xs-12 col-fix dev-project ${a.type}`}
+              >
+                <div className="portfolio-single">
+                  <div className="portfolio-head">
+                    <img src={a.cover_page} alt={a.name_project} />
+                  </div>
+                  <div className="portfolio-hover">
+                    <h4><a href={a.link}>{a.name_project}</a></h4>
+                    <div className="button">
+                      <a onClick={() => modal(a.name_project, a.description, a.cover_page, a.link)}>
+                        <i className="fa fa-search"></i>
+                      </a>
+                      <a href={a.link} className="primary">
+                        <i className="fa fa-link"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="button">
+          <Link to="/portfolio-full-width" className="btn">
+            Más Proyectos<i className="fa fa-angle-double-right"></i>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </motion.section>
   );
 };
 

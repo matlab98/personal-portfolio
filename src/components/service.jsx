@@ -1,20 +1,19 @@
 import React from 'react';
+import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 const service = (props) => {
-  return (
-    <section id="services" className="format-section">
-      <div className="row">
-        <div className="col-md-12 col-sm-12 col-xs-12">
-          <div className="heading">
-            <strong className="sect-title">
-              <span>Servicios</span>
-              <i className="heading-logo service-logo"></i>
-            </strong>
-            <p>Estos son mis servicios.</p>
-          </div>
-        </div>
-      </div>
+  const { t } = useTranslation();
 
+  return (
+    <motion.section
+      id="service"
+      className="format-section"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h2>{t('service.title')}</motion.h2>
       <div className="services-box-container">
         {props['service'].map((a, i) => {
           return (
@@ -26,7 +25,7 @@ const service = (props) => {
           );
         })}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

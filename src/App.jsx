@@ -11,13 +11,6 @@ import {
   setLocalStorageItem,
 } from "./hooks/useLocalStorage";
 
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "motion/react"
-
 function App() {
   const Introduction = React.lazy(() => import("./features/intro/introduction"));
   const Education = React.lazy(() => import("./components/HV/education"));
@@ -80,25 +73,40 @@ function App() {
 
     <div id="example">
       {dato.map((data, id) => (
+        <>
         <section className="section-container">
           <div ref={ref}>
-            
             <Suspense fallback={null}>
               <Introduction intro={data["introduction"]} />
             </Suspense>
-
           </div>
-        </section>))
+        </section>
+        <section className="section-container">
+        <div ref={ref}>
+          <Suspense fallback={null}>
+             <Service service={data["services"]} />
+          </Suspense>
+        </div>
+      </section>
+      <section className="section-container">
+        <div ref={ref}>
+          <Suspense fallback={null}>
+            <Portfolio project={data["portfolio"]} />
+          </Suspense>
+        </div>
+      </section>
+      </>
+      ))
       }
 
-      {sections.map((sec) => (
+  {/*     {sections.map((sec) => (
         <section className="section-container">
           <div ref={ref}>
             <p>{sec.content}</p>
           </div>
         </section>
       )
-      )}
+      )} */}
     </div>
   </>
 

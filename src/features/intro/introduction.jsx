@@ -28,7 +28,7 @@ const { t } = useTranslation();
           />
         ) : (
           <div className="intro-text">
-            <p><strong>Español:</strong> {t('intro.description')}</p>
+            <p><strong></strong> {t('intro.description')}</p>
           </div>
         )}
       </div>

@@ -6,6 +6,10 @@
     "whoami": "¿Quién soy?",
     "description": "Soy un ingeniero apasionado por la tecnología, siempre buscando soluciones eficientes y creativas."
   },
+  "service": {
+    "title": "Mis servicios",
+    "description": "Ofrezco una amplia gama de servicios para satisfacer sus necesidades."
+  },
   "footer": {
     "made_with": "Hecho con mucho",
     "by": "por Hilder Arrieta"

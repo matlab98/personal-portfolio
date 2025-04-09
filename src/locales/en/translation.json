@@ -6,6 +6,22 @@
     "whoami": "Who am I?",
     "description": "I'm an engineer passionate about technology, always seeking efficient and creative solutions."
   },
+  "service": {
+    "title": "My services",
+    "description": "I offer a wide range of services to meet your needs.",
+    "web_development": {
+      "title": "Web Development",
+      "description": "Creating responsive and modern websites."
+    },
+    "mobile_development": {
+      "title": "Mobile Development",
+      "description": "Building mobile applications for iOS and Android."
+    },
+    "ux_ui_design": {
+      "title": "UX/UI Design",
+      "description": "Designing user-friendly interfaces."
+    }
+  },
   "footer": {
     "made_with": "Build from scratch with",
     "by": "by Hilder Arrieta"

@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 import "./assets/style/style.css";
-import { urlStats } from "./../../config/config";
+import { emailKey } from "./../../config/config";
 
 const Touch = ({ email }) => {
   const { t } = useTranslation();
@@ -14,10 +14,11 @@ const Touch = ({ email }) => {
     if (status === "loading") return;
 
     setStatus("loading");
-
-    emailjs.sendForm(urlStats.serviceId, urlStats.templateId, form.current, urlStats.userId).then(
+    console.log(emailKey)
+    emailjs.sendForm(emailKey.serviceId, emailKey.templateId, form.current, emailKey.userId).then(
       () => setStatus("ok"),
       (error) => {
+        console.log(error)
         console.error("FAILED...", error.text);
         setStatus("error");
       }

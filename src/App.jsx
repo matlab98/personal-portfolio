@@ -109,7 +109,7 @@ function App() {
               </Suspense>
             </div>
           </section>
-          <section className="section-container">
+ 
             <div ref={ref}>
               <Suspense fallback={null}>
               <Footer
@@ -119,7 +119,7 @@ function App() {
                 />
               </Suspense>
             </div>
-          </section>
+          
         </>
       ))
       }

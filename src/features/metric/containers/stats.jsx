@@ -1,5 +1,5 @@
 import { useQueryTwoQuery } from "../services/statistics";
-import StackChart from '../../../components/stackChart/StackChart';
+import StackChart from '@/components/stackChart/StackChart';
 
 function AskAi() {
   const { data, error, isLoading } = useQueryTwoQuery();
@@ -10,9 +10,7 @@ function AskAi() {
   
   return (
     <ul>
-      <StackChart data={data.data} />
-      {
-      console.log("test", data.data)}      
+      <StackChart data={data.data} />   
     </ul>
   );
 }

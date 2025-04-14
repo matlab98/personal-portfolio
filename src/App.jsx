@@ -6,11 +6,7 @@ import AskAi from "./features/metric/containers/stats";
 import ScrollBar from "./components/scrollBar/scrollBar";
 import { getCollectionData } from "./firebase/firebase.config";
 import MetricDashBoard from "./containers/MetricDashboard";
-
-import {
-  getLocalStorageItem,
-  setLocalStorageItem,
-} from "./hooks/useLocalStorage";
+import ThemeToggle from '@/components/ThemeToggle';
 
 function App() {
   const Introduction = React.lazy(() => import("./features/intro/introduction"));
@@ -19,36 +15,20 @@ function App() {
   const Portfolio = React.lazy(() => import("./features/portfolio/project"));
   const Service = React.lazy(() => import("./features/service/service"));
    const Touch = React.lazy(() => import("./features/touch/Touch"));
-  const Footer = React.lazy(() => import("./features/footer/components/footer"));
+  const Footer = React.lazy(() => import("./features/footer/footer"));
 
   const [dato, setDato] = useState([]);
-  const [mode, setMode] = useState(getLocalStorageItem("dark-mode"));
 
-  const fetchData = useCallback(async () => {
+  const dataFetch = useCallback(async () => {
     const data = await getCollectionData();
     const info = data.docs.map((item) => item.data());
     setDato(info);
   }, []);
 
-  const Body = document.documentElement;
-
   useEffect(() => {
-    fetchData();
+    dataFetch();
+  }, [dataFetch]);
 
-    const isDarkMode = getLocalStorageItem("dark-mode") ?? "false";
-    const theme = isDarkMode === "true" ? "dark" : "light";
-
-    Body.setAttribute("data-theme", theme);
-    setMode(isDarkMode.toString());
-  }, [fetchData]);
-
-  const change = () => {
-    const newTheme = Body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-    Body.setAttribute("data-theme", newTheme);
-    const isDarkMode = newTheme === "dark";
-    setLocalStorageItem("dark-mode", isDarkMode.toString());
-    setMode(isDarkMode.toString());
-  };
 
 
   const sections = [
@@ -71,11 +51,13 @@ function App() {
   return <>
     <ScrollBar />
     <div id="example">
+    
       {dato.map((data, id) => (
         <>
           <section key={id} className="section-container">
             <div ref={ref}>
               <Suspense fallback={null}>
+              <ThemeToggle />
                 <Introduction intro={data["introduction"]} />
               </Suspense>
             </div>
@@ -98,20 +80,15 @@ function App() {
             <div ref={ref}>
               <Suspense fallback={null}>
                 <MetricDashBoard />
-                 <Stats status={mode} /> 
+                 {//<Stats status={mode} /> 
+                 }
               </Suspense>
             </div>
           </section>
-          <section className="section-container">
             <div ref={ref}>
               <Suspense fallback={null}>
+
               <Touch email={data["email"]} />
-              </Suspense>
-            </div>
-          </section>
- 
-            <div ref={ref}>
-              <Suspense fallback={null}>
               <Footer
                    cel={data["cel"]}
                    social={data["socialN"]}
@@ -123,6 +100,7 @@ function App() {
         </>
       ))
       }
+
 
       {/*     {sections.map((sec) => (
         <section className="section-container">

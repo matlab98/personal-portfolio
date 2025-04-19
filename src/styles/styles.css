@@ -1,5 +1,6 @@
 @import 'utilities.css';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -17,12 +18,14 @@ ul {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 :root {
-  --primary: #4b0082;
-  --secondary: #9097fd;
-  --nav-color: rgb(17, 17, 17);
+  --primary: #22303C;
+  --secondary: #10B981;
+  --accent: #FF8C42;
+  --nav-color: #111;
   --nav-color-secoundary: #ffffffcc;
   --nav-color-text: #e4e4e4;
   --button-hire-color: #242830;
@@ -33,17 +36,16 @@ a {
 }
 
 [data-theme='light'] {
-  --body: #f9faf5;
-  --title: #14160a;
-  --subtitle: #3a3940;
+  --body: #f7f9fb;
+  --title: #1e2a38;
+  --subtitle: #3a3d4a;
   --text: #353135c0;
   --ternary: #e4e4e4;
-  --shadow-color: #4b4948;
-  --button-color: #242830;
-  --toggle-button-shadow: rgb(236, 205, 5);
-  --body-timeline: #f8f5fa;
-  --transform: translateX(0px);
-  --form-back-color: #fff;
+  --shadow-color: #c9ced4;
+  --button-color: #10B981;
+  --toggle-button-shadow: #ffc107;
+  --body-timeline: #f8f9fa;
+  --form-back-color: #ffffff;
   --placeholder-text: #888790;
   --border-form-color: #c6c5ce;
 }
@@ -54,12 +56,11 @@ a {
   --subtitle: #e6e7e8;
   --text: #a8acb1;
   --ternary: #29313d;
-  --shadow-color: #ece8e7;
-  --button-color: #ffffff;
+  --shadow-color: #2c2f36;
+  --button-color: #10B981;
   --toggle-button-shadow: #ece8e7;
   --input: #444950;
   --body-timeline: #252a41;
-  --transform: translateX(15px);
   --form-back-color: #29313d;
   --placeholder-text: #7e838a;
   --border-form-color: #595961;
@@ -69,11 +70,14 @@ a {
 
 body {
   background-color: var(--body);
+  color: var(--text);
+  display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  margin: 0px;
-  padding: 0px;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -88,39 +92,37 @@ html {
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  box-sizing: border-box;
   position: relative;
   overflow: hidden;
-  padding: 0 2rem;
 }
 
 .section-container > div {
-  max-width: 800px;
+  max-width: 900px;
   text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: var(--form-back-color);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .section-container h2 {
-  color: #4ff0b7;
-  font-family: "Azeret Mono", monospace;
-  font-size: 40px;
-  font-weight: 700;
+  color: var(--secondary);
+  font-size: 3rem;
+  font-weight: 600;
   margin-bottom: 1rem;
+  letter-spacing: 1px;
 }
 
 .section-container p {
-  font-size: 20px;
-  color: #333;
+  font-size: 1.25rem;
+  color: var(--text);
+  line-height: 1.6;
 }
-
-
-
-
-
-
 
 ::-webkit-scrollbar {
   display: none;
 }
+
 /*========================
         NavBar
 ========================*/

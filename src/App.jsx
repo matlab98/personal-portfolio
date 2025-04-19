@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, Suspense, useCallback } from "react";
 
-import Main from "./components/Dash";
+import Main from "./features/main/Dash";
 //import Footer from "./components/Footer";
 import AskAi from "./features/metric/containers/stats";
 import ScrollBar from "./components/scrollBar/scrollBar";
@@ -29,15 +29,6 @@ function App() {
     dataFetch();
   }, [dataFetch]);
 
-
-
-  const sections = [
-    { id: 1, title: "Hero", content: "Bienvenido a nuestra web." },
-    { id: 2, title: "Servicios", content: "Ofrecemos soluciones a medida." },
-    { id: 3, title: "Portafolio", content: "Proyectos recientes." },
-    { id: 4, title: "Equipo", content: "Conoce a nuestro equipo." },
-    { id: 5, title: "Contacto", content: "Escríbenos para más info." },
-  ]
   const ref = useRef(null)
 
   if (dato.length === 0) {
@@ -54,10 +45,16 @@ function App() {
     
       {dato.map((data, id) => (
         <>
+        <div ref={ref}>
+        <Suspense fallback={null}>
+          <Main resume={data["resume"]} cv={data["CV"]} />
+          </Suspense>
+        </div>
           <section key={id} className="section-container">
             <div ref={ref}>
               <Suspense fallback={null}>
               <ThemeToggle />
+              
                 <Introduction intro={data["introduction"]} />
               </Suspense>
             </div>
@@ -80,8 +77,8 @@ function App() {
             <div ref={ref}>
               <Suspense fallback={null}>
                 <MetricDashBoard />
-                 {//<Stats status={mode} /> 
-                 }
+                 <Stats /> 
+                 
               </Suspense>
             </div>
           </section>
@@ -100,16 +97,6 @@ function App() {
         </>
       ))
       }
-
-
-      {/*     {sections.map((sec) => (
-        <section className="section-container">
-          <div ref={ref}>
-            <p>{sec.content}</p>
-          </div>
-        </section>
-      )
-      )} */}
     </div>
   </>
 

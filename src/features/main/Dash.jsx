@@ -4,22 +4,8 @@ import { useTranslation } from 'react-i18next';
 const intro = ({ resume, cv, status }) => {
   const { t, i18n } = useTranslation();
 
-  const detectLanguage = () => {
-    // `navigator.language` devuelve el lenguaje preferido del usuario
-    const language = navigator.language || navigator.userLanguage; // para compatibilidad con navegadores más antiguos
-    console.log(`El lenguaje del sistema es: ${language}`);
-    
-    // `navigator.languages` devuelve un array de los lenguajes preferidos
-    const languages = navigator.languages;
-    console.log(`Lenguajes preferidos: ${languages.join(', ')}`);
-    
-    return language;
-  };
-
-detectLanguage();
-
     return (
-      <section id="main">
+      <main id="main">
         <div className="main-text">
           <h1>{t("greeting")}</h1>
           <p className="description">{resume}</p>
@@ -36,13 +22,14 @@ detectLanguage();
         </div>
         <div className="model">
           <div>
-            <img
-              src="https://res.cloudinary.com/dpykpv9hd/image/upload/v1628438688/xlrwpfzhyey6imvvoi9r.png"
-              alt="me"
-            />
+            <picture>
+              <source media='(min-width: 900px)' srcset='https://res.cloudinary.com/dpykpv9hd/image/upload/v1628438688/xlrwpfzhyey6imvvoi9r.png'/>
+              <source media='(min-width: 550px)' srcset='https://res.cloudinary.com/dpykpv9hd/image/upload/v1628438688/xlrwpfzhyey6imvvoi9r.png'/>
+              <img src='https://res.cloudinary.com/dpykpv9hd/image/upload/v1628438688/xlrwpfzhyey6imvvoi9r.png' alt="me"/>
+            </picture>            
           </div>
         </div>
-      </section>
+      </main>
     );
 };
 

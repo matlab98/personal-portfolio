@@ -14,7 +14,7 @@ function App() {
   const Stats = React.lazy(() => import("./features/metric/containers/stats"));
   const Portfolio = React.lazy(() => import("./features/portfolio/project"));
   const Service = React.lazy(() => import("./features/service/service"));
-   const Touch = React.lazy(() => import("./features/touch/Touch"));
+  const Touch = React.lazy(() => import("./features/touch/Touch"));
   const Footer = React.lazy(() => import("./features/footer/footer"));
 
   const [dato, setDato] = useState([]);
@@ -42,19 +42,19 @@ function App() {
   return <>
     <ScrollBar />
     <div id="example">
-    
+
       {dato.map((data, id) => (
         <>
-        <div ref={ref}>
-        <Suspense fallback={null}>
-          <Main resume={data["resume"]} cv={data["CV"]} />
-          </Suspense>
-        </div>
+          <div ref={ref}>
+            <Suspense fallback={null}>
+              <Main resume={data["resume"]} cv={data["CV"]} />
+            </Suspense>
+          </div>
           <section key={id} className="section-container">
             <div ref={ref}>
               <Suspense fallback={null}>
-              <ThemeToggle />
-              
+                <ThemeToggle />
+
                 <Introduction intro={data["introduction"]} />
               </Suspense>
             </div>
@@ -77,23 +77,23 @@ function App() {
             <div ref={ref}>
               <Suspense fallback={null}>
                 <MetricDashBoard />
-                 <Stats /> 
-                 
+                <Stats />
+
               </Suspense>
             </div>
           </section>
-            <div ref={ref}>
-              <Suspense fallback={null}>
+          <div ref={ref}>
+            <Suspense fallback={null}>
 
               <Touch email={data["email"]} />
               <Footer
-                   cel={data["cel"]}
-                   social={data["socialN"]}
-                   loc={data["location"]}
-                />
-              </Suspense>
-            </div>
-          
+                cel={data["cel"]}
+                social={data["socialN"]}
+                loc={data["location"]}
+              />
+            </Suspense>
+          </div>
+
         </>
       ))
       }
@@ -103,99 +103,6 @@ function App() {
 
 
 
-
-  //     return (
-  //       <div className="App">
-  //         <AskAi />
-  //         
-  //         {dato.map((data, id) => (
-  //           <div key={id}>
-  //             <nav className="navigation">
-  //               <a href="{#}" className="logo">
-  //                 <img
-  //                   src="https://res.cloudinary.com/dpykpv9hd/image/upload/v1628388753/dsn8q08orztuibj1xycc.png"
-  //                   alt="me"
-  //                 />
-  //               </a>
-
-  //               <input type="checkbox" className="menu-btn" id="menu-btn" />
-  //               <label htmlFor="menu-btn" className="menu-icon">
-  //                 <span className="nav-icon" />
-  //               </label>
-
-  //               <ul className="menu">
-  //                 <li>
-  //                   <Link to="main" smooth={true} duration={500}>Inicio</Link>
-  //                 </li>
-  //                 <li>
-  //                   <Link to="skills" smooth={true} duration={500}>Habilidades</Link>
-  //                 </li>
-  //                 <li>
-  //                   <Link to="introduction" smooth={true} duration={500}>Introducción</Link>
-  //                 </li>
-  //                 <li>
-  //                   <Link to="services" smooth={true} duration={500}>Servicio</Link>
-  //                 </li>
-  //                 <li>
-  //                   <Link to="footer" smooth={true} duration={500}>Contacto</Link>
-  //                 </li>
-  //               </ul>
-
-
-  //             </nav> 
-
-  //             <Element name="main">
-  //             <section style={{ height: '100vh' }}>
-  //               <Main resume={data["resume"]} cv={data["CV"]} status={mode} />
-  //               </section>
-  //             </Element>
-
-  //             <Suspense fallback={<div>Cargando...</div>}>
-  //               <Element name="introduction">
-  //               <section style={{ height: '100vh' }}>
-  //                 <Introduction intro={data["introduction"]} />
-  //                 </section>
-  //               </Element>
-  //             </Suspense>
-
-  //             {/* <Suspense fallback={<div>Cargando...</div>}>
-  //               <Element name="skills">
-  //                 <Stats status={mode} />
-  //               </Element>
-  //             </Suspense> */}
-
-  //             {/* <Suspense fallback={<div>Cargando...</div>}>
-  //               <Element name="services">
-  //                 <Service service={data["services"]} />
-  //               </Element>
-  //             </Suspense>
-  //             <Suspense fallback={<div>Cargando...</div>}>
-  //               <Element name="projects">
-  //                 <Portfolio project={data["portfolio"]} />
-  //               </Element>
-  //             </Suspense> */}
-
-  //             {/* <Suspense fallback={<div>Cargando...</div>}>
-  //               <Element name="contact">
-  //                 <Touch email={data["email"]} />
-  //               </Element>
-  //             </Suspense> */}
-
-  //             <Suspense fallback={<div>Cargando...</div>}>
-  //             <Element name="footer">
-  //             <section style={{ height: '100vh' }}>
-  //               <Footer
-  //                 cel={data["cel"]}
-  //                 social={data["socialN"]}
-  //                 loc={data["location"]}
-  //               />
-  //               </section>
-  //               </Element>
-  //             </Suspense>
-  //           </div>
-  //         ))}
-  //       </div>
-  //     );
 
 }
 

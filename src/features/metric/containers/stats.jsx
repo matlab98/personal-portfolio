@@ -1,18 +1,24 @@
-import { useQueryTwoQuery } from "../services/statistics";
+import { useQueryTwoQuery, useQueryFourQuery, useQueryOneQuery, useQueryThreeQuery } from "../services/statistics";
 import StackChart from '@/components/stackChart/StackChart';
+import { useTranslation } from 'react-i18next';
+import MetricDashBoard from '@/containers/MetricDashboard';
 
-function AskAi() {
+function stats() {
+  const { t } = useTranslation();
   const { data, error, isLoading } = useQueryTwoQuery();
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  console.log(data)
+  const { data: dataFour, error: errorFour, isLoading: isLoadingFour } = useQueryFourQuery();
+
+  if (isLoading || isLoadingFour) return <div>{t('common.loading')}</div>;
+  if (error || errorFour) return <div>{t('common.error', { message: error.message ?? errorFour.message })}</div>;
+  
   
   return (
     <ul>
       <StackChart data={data.data} />   
+      <MetricDashBoard data={dataFour.data} />
     </ul>
   );
 }
 
-export default AskAi;
+export default stats;

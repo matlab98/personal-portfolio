@@ -1,35 +1,51 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import lightTheme from '@/config/lightTheme'; // Asegúrate que la ruta @/config sea correcta
+import darkTheme from '@/config/darkTheme';   // Asegúrate que la ruta @/config sea correcta
+import { getLocalStorageItem, setLocalStorageItem } from "@/hooks/useLocalStorage";
 
-import {
-    getLocalStorageItem,
-    setLocalStorageItem,
-} from "@/hooks/useLocalStorage";
+const ThemeModeContext = createContext({
+  toggleTheme: () => {},
+  mode: 'light',
+});
 
-const ThemeContext = createContext();
+const AppThemeProvider = ({ children }) => {
+  const [mode, setMode] = useState('light');
 
-const ThemeProvider = ({ children }) => {
-    const [dark, setDark] = useState(false);
+  useEffect(() => {
+    const savedMode = getLocalStorageItem('themeMode') || 'light';
+    setMode(savedMode);
+  }, []);
 
-    // Guardar preferencia en localStorage (opcional)
-    useEffect(() => {
-        const saved = getLocalStorageItem('theme') === 'dark';
-        setDark(saved);
-    }, []);
+  const themeManager = useMemo(
+    () => ({
+      toggleTheme: () => {
+        setMode((prevMode) => {
+          const newMode = prevMode === 'light' ? 'dark' : 'light';
+          setLocalStorageItem('themeMode', newMode);
+          // Ya no manipulamos data-theme directamente aquí, MUI se encargará
+          return newMode;
+        });
+      },
+      mode,
+    }),
+    [mode]
+  );
 
-    useEffect(() => {
-        setLocalStorageItem('theme', dark ? 'dark' : 'light');
-        
-        document.documentElement.setAttribute("data-theme", dark ? 'dark' : 'light');
-    }, [dark]);
+  const activeTheme = useMemo(() => (mode === 'light' ? lightTheme : darkTheme), [mode]);
 
-    return (
-        <ThemeContext.Provider value={{ dark, setDark }}>
-            {children}
-        </ThemeContext.Provider>
-    );
+  return (
+    <ThemeModeContext.Provider value={themeManager}>
+      <MuiThemeProvider theme={activeTheme}>
+        <CssBaseline /> {/* Normaliza estilos y aplica color de fondo del tema */}
+        {children}
+      </MuiThemeProvider>
+    </ThemeModeContext.Provider>
+  );
 };
 
-const useTheme = () => useContext(ThemeContext);
+const useAppTheme = () => useContext(ThemeModeContext);
 
-export { ThemeProvider, useTheme }
+export { AppThemeProvider, useAppTheme };
 

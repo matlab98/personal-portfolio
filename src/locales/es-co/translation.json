@@ -2,27 +2,90 @@
   "greeting": "Hey, Yo soy FullStack Developer",
   "download_cv": "Descargar CV",
   "hire_me": "Contrátame",
+  "hero": {
+    "titleLine1": "Deja de perder tiempo.",
+    "titleLine2": "Empieza a entregar valor.",
+    "subtitle": "Ingeniero full‑stack enfocado en UX clara, código mantenible y resultados medibles.",
+    "bullets": [
+      { "strong": "Alcance claro.", "rest": "Sin jerga. Qué se construye y por qué." },
+      { "strong": "Ejecución rápida.", "rest": "De idea a deploy con React moderno + APIs." },
+      { "strong": "Entrega confiable.", "rest": "Tests, observabilidad y performance desde el inicio." }
+    ]
+  },
+  "nav": {
+    "brand": "Mi Portafolio",
+    "introduction": "Introducción",
+    "resume": "Resumen",
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "statistics": "Estadísticas",
+    "contact": "Contacto"
+  },
   "intro": {
     "whoami": "Entonces, ¿quién soy?",
     "description": "Soy un ingeniero apasionado por la tecnología, siempre buscando soluciones eficientes y creativas."
   },
+  "education": {
+    "title": "Trabajo & Educación",
+    "subtitle": "Esta es mi formación profesional hasta hoy."
+  },
   "service": {
     "title": "Mis servicios",
-    "description": "Ofrezco una amplia gama de servicios para satisfacer sus necesidades."
-  },
-    "contact": {
-      "title": "Contáctame",
-      "subtitle": "Es tiempo de conocernos. Si te interesa mi trabajo, escríbeme y hablamos de tu proyecto.",
-      "name": "Tu nombre",
-      "email": "Correo",
-      "message": "Mensaje",
-      "submit": "Enviar",
-      "success": "¡Gracias! Te contactaré pronto.",
-      "error": "Algo salió mal. Intenta de nuevo."
+    "description": "Ofrezco una amplia gama de servicios para satisfacer sus necesidades.",
+    "web_development": {
+      "title": "Desarrollo Web",
+      "description": "Creando sitios web modernos y responsivos."
     },
+    "backend_development": {
+      "title": "Desarrollo BackEnd",
+      "description": "Construyendo aplicaciones del lado del servidor robustas y escalables."
+    },
+    "ux_ui_design": {
+      "title": "Diseño UX/UI",
+      "description": "Diseñando interfaces amigables para el usuario."
+    }
+  },
+  "metrics": {
+    "yearsProgramming": "Años programando",
+    "hoursProgramming": "Horas de programación",
+    "projectsParticipated": "Proyectos en los que he participado"
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "categories": {
+      "all": "Todos",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "automation": "Automatización",
+      "devops": "DevOps"
+    },
+    "actions": {
+      "viewDetails": "Detalles",
+      "liveDemo": "Demo",
+      "close": "Cerrar",
+      "visitProject": "Visitar Proyecto"
+    }
+  },
+  "stackChart": {
+    "title": "Lenguajes más usados",
+    "seriesName": "Uso (%)"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error: {{message}}"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "Es tiempo de conocernos. Si te interesa mi trabajo, escríbeme y hablamos de tu proyecto.",
+    "name": "Tu nombre",
+    "email": "Correo",
+    "message": "Mensaje",
+    "submit": "Enviar",
+    "success": "¡Gracias! Te contactaré pronto.",
+    "error": "Algo salió mal. Intenta de nuevo."
+  },
   "footer": {
     "made_with": "Hecho con mucho",
     "by": "por Hilder Arrieta"
   }
 }
-

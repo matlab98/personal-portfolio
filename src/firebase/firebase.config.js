@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { collection, getDocs, getFirestore } from "firebase/firestore/lite";
 
-
 const env = import.meta.env;
 const firebaseConfig = {
   apiKey: env.VITE_FIREBASE_API_KEY,
@@ -10,7 +9,7 @@ const firebaseConfig = {
   storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: env.VITE_FIREBASE_SENDER_ID,
   appId: env.VITE_FIREBASE_APP_ID,
-  measurementId: env.VITE_FIREBASE_MEASURE_ID
+  measurementId: env.VITE_FIREBASE_MEASURE_ID,
 };
 
 const app = initializeApp(firebaseConfig);

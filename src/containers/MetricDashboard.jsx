@@ -1,16 +1,11 @@
 import React from 'react';
 import CountUp from 'react-countup';
 import { motion } from 'framer-motion';
-import './style.css'
+import { useTranslation } from 'react-i18next';
+import './style.css';
+import formatDate from '../utils/formatDate';
 
-
-const metrics = [
-  { id: 1, label: 'Años Programando', value: 5 },
-  { id: 2, label: 'Horas de Programación', value: 7000 },
-  { id: 3, label: 'Proyectos Participados', value: 45 },
-];
-
-const MetricCard = ({ label, value, delay }) => (
+const MetricCard = ({ label, value, delay, showPlus }) => (
   <motion.div
     className="metric-card"
     initial={{ opacity: 0, y: 30 }}
@@ -20,13 +15,21 @@ const MetricCard = ({ label, value, delay }) => (
   >
     <h3 className="metric-value">
       <CountUp end={value} duration={2} separator="," />
-      {label.includes('Años') && '+'}
+      {showPlus && '+'}
     </h3>
     <p className="metric-label">{label}</p>
   </motion.div>
 );
 
-const MetricsDashboard = () => {
+const MetricDashboard = ( data ) => {
+  const { t } = useTranslation();
+  console.log(data.data["grand_total"]["human_readable_total_including_other_language"]);
+  const metrics = [
+    { id: 1, label: t('metrics.yearsProgramming'), value: formatDate.convertDaysToYearsByDate(data.data["range"]["days_including_holidays"]), showPlus: true },
+    { id: 2, label: t('metrics.hoursProgramming'), value: formatDate.getHours(data.data["grand_total"]["human_readable_total_including_other_language"]), showPlus: false },
+    { id: 3, label: t('metrics.projectsParticipated'), value: "45", showPlus: false },
+  ];
+
   return (
     <section className="metrics-section">
       <div className="container-metrics">
@@ -35,6 +38,7 @@ const MetricsDashboard = () => {
             key={m.id}
             label={m.label}
             value={m.value}
+            showPlus={m.showPlus}
             delay={i * 0.2}
           />
         ))}
@@ -43,4 +47,4 @@ const MetricsDashboard = () => {
   );
 };
 
-export default MetricsDashboard;
+export default MetricDashboard;

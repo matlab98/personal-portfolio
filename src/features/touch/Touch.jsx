@@ -14,15 +14,22 @@ const Touch = ({ email }) => {
     if (status === "loading") return;
 
     setStatus("loading");
-    console.log(emailKey)
-    emailjs.sendForm(emailKey.serviceId, emailKey.templateId, form.current, emailKey.userId).then(
-      () => setStatus("ok"),
-      (error) => {
-        console.log(error)
-        console.error("FAILED...", error.text);
-        setStatus("error");
-      }
-    );
+    console.log(emailKey);
+    emailjs
+      .sendForm(
+        emailKey.serviceId,
+        emailKey.templateId,
+        form.current,
+        emailKey.userId
+      )
+      .then(
+        () => setStatus("ok"),
+        (error) => {
+          console.log(error);
+          console.error("FAILED...", error.text);
+          setStatus("error");
+        }
+      );
   };
 
   return (
@@ -32,13 +39,12 @@ const Touch = ({ email }) => {
         <p>{t("contact.subtitle")}</p>
       </div>
 
-      <form ref={form} onSubmit={sendEmail} className={`contact-form ${status}`}>
-        <input
-          type="hidden"
-          name="who"
-          value={email[0] || email[1]}
-          required
-        />
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className={`contact-form ${status}`}
+      >
+        <input type="hidden" name="who" value={email[0] || email[1]} required />
 
         <input
           type="text"
@@ -52,11 +58,7 @@ const Touch = ({ email }) => {
           placeholder={t("contact.email")}
           required
         />
-        <textarea
-          name="message"
-          placeholder={t("contact.message")}
-          required
-        />
+        <textarea name="message" placeholder={t("contact.message")} required />
 
         <button type="submit">
           {status === "loading" ? (
@@ -66,8 +68,12 @@ const Touch = ({ email }) => {
           )}
         </button>
 
-        {status === "ok" && <p className="success-msg">{t("contact.success")}</p>}
-        {status === "error" && <p className="error-msg">{t("contact.error")}</p>}
+        {status === "ok" && (
+          <p className="success-msg">{t("contact.success")}</p>
+        )}
+        {status === "error" && (
+          <p className="error-msg">{t("contact.error")}</p>
+        )}
       </form>
     </section>
   );

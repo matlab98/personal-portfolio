@@ -1,37 +1,16 @@
-
-
-
-
-    /* 
-        const change = () => {
-            const newTheme = Body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-            Body.setAttribute("data-theme", newTheme);
-            const isDarkMode = newTheme === "dark";
-            setLocalStorageItem("dark-mode", isDarkMode.toString());
-            setMode(isDarkMode.toString());
-        }; */
-
 import React from 'react';
-import { useTheme } from '@/context/ThemeContext';
+import { useAppTheme } from '@/context/ThemeContext';
+import IconButton from '@mui/material/IconButton';
+import Brightness4Icon from '@mui/icons-material/Brightness4'; // Icono para modo oscuro (luna)
+import Brightness7Icon from '@mui/icons-material/Brightness7'; // Icono para modo claro (sol)
 
 const ThemeToggle = () => {
-  const { dark, setDark } = useTheme();
+  const { mode, toggleTheme } = useAppTheme();
 
   return (
-    <button
-      onClick={() => setDark(!dark)}
-      style={{
-        padding: '0.5rem 1rem',
-        borderRadius: '5px',
-        border: 'none',
-        backgroundColor: dark ? '#333' : '#ddd',
-        color: dark ? '#fff' : '#000',
-        cursor: 'pointer',
-        transition: 'all 0.3s ease',
-      }}
-    >
-      {dark ? '🌙 Dark Mode' : '☀️ Light Mode'}
-    </button>
+    <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit" aria-label={mode === 'dark' ? "Activar modo claro" : "Activar modo oscuro"}>
+      {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+    </IconButton>
   );
 };
 

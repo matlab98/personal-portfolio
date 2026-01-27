@@ -1,27 +1,32 @@
-import React from 'react';
+import React from "react";
 import { motion } from "framer-motion";
-import { useTranslation } from 'react-i18next';
-import './assets/style/style.css';
+import { useTranslation } from "react-i18next";
+import "./assets/style/style.css";
 
 const service = (props) => {
   const { t } = useTranslation();
+  const services = props?.service || [];
+
+  if (!services || services.length === 0) {
+    return null;
+  }
 
   return (
     <motion.section
-      id="service"
+      id="services"
       className="format-section"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <motion.h2>{t('service.title')}</motion.h2>
+      <motion.h2>{t("service.title")}</motion.h2>
       <div className="services-box-container">
-        {props['service'].map((a, i) => {
+        {services.map((a, i) => {
           return (
             <div className="service-box" key={i} data-aos="fade-up">
-              <i className={a.icon}></i>
-              <strong>{a.service}</strong>
-              <p>{a.description}</p>
+              {a.icon && <i className={a.icon}></i>}
+              {a.service && <strong>{a.service}</strong>}
+              {a.description && <p>{a.description}</p>}
             </div>
           );
         })}

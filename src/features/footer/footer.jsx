@@ -8,27 +8,41 @@ const Footer = ({ cel, social, loc }) => {
   const { t } = useTranslation();
 
   return (
-    
     <footer>
-  <div className="footer-content">
-    <span className="footer-text">
-      {t('footer.made_with')} ❤️ {t('footer.by')}. &copy; {new Date().getFullYear()}
-    </span>
+      <div className="footer-content">
+        <span className="footer-text">
+          {t('footer.made_with')} ❤️ {t('footer.by')}. &copy; {new Date().getFullYear()}
+        </span>
 
-    <div className="footer-social">
-      <a href={social['Facebook']} aria-label="Instagram">
-        <InstagramOutlined />
-      </a>
-      <a href={social['Linkedin']} aria-label="LinkedIn">
-        <LinkedinFilled />
-      </a>
-      <a href={social['GitHub']} aria-label="GitHub">
-        <GithubOutlined />
-      </a>
-    </div>
-  </div>
-</footer>
+        {social && (
+          <div className="footer-social">
+            {social['Facebook'] && (
+              <a href={social['Facebook']} aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <InstagramOutlined />
+              </a>
+            )}
+            {social['Linkedin'] && (
+              <a href={social['Linkedin']} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                <LinkedinFilled />
+              </a>
+            )}
+            {social['GitHub'] && (
+              <a href={social['GitHub']} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                <GithubOutlined />
+              </a>
+            )}
+          </div>
+        )}
 
+        {loc && (
+          <span className="location">
+            {loc.city && `${loc.city}`}
+            {loc.country && loc.city && `, `}
+            {loc.country && `${loc.country}`}
+          </span>
+        )}
+      </div>
+    </footer>
   );
 };
 

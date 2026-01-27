@@ -1,0 +1,37 @@
+/*===========================
+          Introducción
+===========================*/
+
+.format-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 3;
+    position: relative;
+    text-align: center;
+    padding: 5px 0px 40px;
+    margin: auto;
+  }
+  
+  #introduction {
+    max-width: 80%;
+    background-size: 950px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  #services, #introduction, #skills {
+    padding-top: 60px;
+  }
+  
+  .intro-heading {
+    width: 60%;
+  }
+  
+  .intro-video iframe {
+    width: 712px;
+    height: 400px;
+    position: relative;
+  }
+  

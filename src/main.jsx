@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Navigate, Route, BrowserRouter as Router, Routes, useParams } from 'react-router-dom';
 
@@ -9,10 +8,11 @@ import App from './App.jsx';
 import i18n from './i18n';
 
 import store from '@/app/store.js';
-import { ThemeProvider } from '@/context/ThemeContext';
-import Error from '@/pages/errors/E404.jsx';0
-import '@/styles/responsive-style.css';
-import '@/styles/styles.css';
+import Error from '@/pages/errors/E404.jsx';
+//import '@/styles/responsive-style.css';
+//import '@/styles/styles.css';
+import { AppThemeProvider } from './context/ThemeContext.jsx';
+import { I18nextProvider } from 'react-i18next';
 
 
 const AutoRedirect = () => {
@@ -34,22 +34,26 @@ const LangRouter = () => {
   }, [lang]);
 
   return (
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <App />
   );
 };
 
 createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <Router>
-      <Routes>
-        <Route path="/" element={<AutoRedirect />} />
-        <Route path="/:lang/*" element={<LangRouter />} />
-        <Route path="/error" element={<Error />} />
-        <Route path="*" element={<Navigate to="/error" replace />} />
-      </Routes>
-    </Router>
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <I18nextProvider i18n={i18n}>
+        <AppThemeProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<AutoRedirect />} />
+              <Route path="/:lang/*" element={<LangRouter />} />
+              <Route path="/error" element={<Error />} />
+              <Route path="*" element={<Navigate to="/error" replace />} />
+            </Routes>
+          </Router>
+        </AppThemeProvider>
+      </I18nextProvider>
+    </Provider>
+  </React.StrictMode>
 );
 

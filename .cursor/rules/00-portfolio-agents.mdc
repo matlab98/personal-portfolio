@@ -1,0 +1,21 @@
+---
+description: Despacho de 6 agentes del portfolio (skills + subagents). Aplica en toda sesión.
+alwaysApply: true
+---
+
+# Agentes
+
+Lee `AGENTS.md` si la tarea no es trivial. Un dueño por tarea. Español.
+
+**Skills** (`.cursor/skills/portfolio-*/SKILL.md`) y **subagents** (`.cursor/agents/*.md`) — mismo rol; el subagent aísla contexto.
+
+1. **Arquitecto** — límites, stack, flujo. Skill `portfolio-architect` · subagent `architect`
+2. **Front** — React, MUI, slides, i18n UI. Skill `portfolio-frontend` · subagent `frontend`
+3. **Back** — Firestore, RTK/stats, EmailJS, env. Skill `portfolio-backend` · subagent `backend`
+4. **Fullstack** — feature punta a punta. Skill `portfolio-fullstack` · subagent `fullstack`
+5. **QA** — bugs, caos, layout-contract. Skill `portfolio-qa` · subagent `qa`
+6. **DevOps** — build, CI, Netlify, Vitest. Skill `portfolio-devops` · subagent `devops`
+
+Invocar: «usa el subagent qa para…» / «usa el skill portfolio-frontend…».
+
+**No negociable:** Vite + `@/`. MUI para lo nuevo. RTK solo métricas. Copy con `t()`. No CRA. No cuarta lib UI/charts/motion. Snap solo ≥ md. Sin teléfono/ubicación en UI. Portfolio, no plataforma.

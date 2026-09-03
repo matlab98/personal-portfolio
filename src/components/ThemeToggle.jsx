@@ -1,16 +1,23 @@
-import React from 'react';
-import { useAppTheme } from '@/context/ThemeContext';
 import IconButton from '@mui/material/IconButton';
-import Brightness4Icon from '@mui/icons-material/Brightness4'; // Icono para modo oscuro (luna)
-import Brightness7Icon from '@mui/icons-material/Brightness7'; // Icono para modo claro (sol)
+import Tooltip from '@mui/material/Tooltip';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import { useTranslation } from 'react-i18next';
+
+import { useAppTheme } from '@/context/ThemeContext';
 
 const ThemeToggle = () => {
   const { mode, toggleTheme } = useAppTheme();
+  const { t } = useTranslation();
+
+  const label = mode === 'dark' ? t('theme.to_light') : t('theme.to_dark');
 
   return (
-    <IconButton sx={{ ml: 1 }} onClick={toggleTheme} color="inherit" aria-label={mode === 'dark' ? "Activar modo claro" : "Activar modo oscuro"}>
-      {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-    </IconButton>
+    <Tooltip title={label}>
+      <IconButton onClick={toggleTheme} color="inherit" aria-label={label}>
+        {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
+      </IconButton>
+    </Tooltip>
   );
 };
 

@@ -1,57 +1,120 @@
 {
-  "greeting": "Hey, I'm FullStack Developer",
   "download_cv": "Download CV",
   "hire_me": "Hire me",
   "hero": {
-    "titleLine1": "Stop shipping bugs.",
-    "titleLine2": "Start shipping value.",
-    "subtitle": "Full‑stack engineer focused on clean UX, maintainable code, and measurable outcomes.",
-    "bullets": [
-      { "strong": "Clear scope.", "rest": "No jargon. Just what gets built and why." },
-      { "strong": "Fast execution.", "rest": "From idea to deploy with modern React + APIs." },
-      { "strong": "Reliable delivery.", "rest": "Tests, observability, and performance in mind." }
-    ]
+    "eyebrow": "Fullstack engineer",
+    "titleLine1": "I build software",
+    "titleLine2": "and I measure what I build.",
+    "subtitle": "Fullstack engineer: clean UX, maintainable code, and results you can verify. I've tracked every coding hour for five years — what follows isn't a wish list, it's data.",
+    "cta_work": "See projects",
+    "cta_contact": "Let's talk",
+    "photo_placeholder": "Photo coming soon"
   },
   "nav": {
-    "brand": "My Portfolio",
-    "introduction": "Introduction",
-    "resume": "Resume",
+    "brand": "Hilder Arrieta",
+    "primary": "Main navigation",
+    "introduction": "About",
+    "about": "About",
+    "resume": "Track record",
     "services": "Services",
+    "skills": "Skills",
     "portfolio": "Portfolio",
-    "statistics": "Statistics",
-    "contact": "Contact"
+    "statistics": "Metrics",
+    "contact": "Contact",
+    "closing": "Contact",
+    "index": "Index",
+    "index_title": "Section index",
+    "close_index": "Close index",
+    "language": "Change language",
+    "languages": {
+      "en": "English",
+      "es": "Spanish"
+    },
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "back_to_top": "Back to top",
+    "skip_to_content": "Skip to content"
   },
-  "intro": {
-    "whoami": "So, who am I?",
-    "description": "I'm an engineer passionate about technology, always seeking efficient and creative solutions."
+  "theme": {
+    "to_light": "Switch to light mode",
+    "to_dark": "Switch to dark mode"
+  },
+  "about": {
+    "title": "Who I am",
+    "subtitle": "The short version, no fluff.",
+    "p1": "I'm Hilder Arrieta, a fullstack engineer. I work the whole product: data model, API, interface, and deploy. I don't hand over \"the frontend half and we'll see about the backend\".",
+    "p2": "My center of gravity is C# and .NET on the server, React with TypeScript on the client, and SQL in between. Around that: test automation, containers, and pipelines — because code nobody can deploy isn't finished.",
+    "p3": "And something almost nobody does: I measure my own work. Every coding hour since April 2021 is tracked, and those numbers are what you see in this portfolio. If something here says \"five years of experience\", there's a public JSON backing it.",
+    "facts": {
+      "role": "Role",
+      "role_value": "Fullstack engineer",
+      "focus": "Focus",
+      "focus_value": ".NET · React · SQL · DevOps",
+      "tracking": "Tracking since",
+      "tracking_value": "April 2021",
+      "languages": "Languages",
+      "languages_value": "Spanish · English"
+    },
+    "videoTitle": "Introduction video",
+    "watch": "Watch the intro",
+    "photo_placeholder": "Photo coming soon"
+  },
+  "progress": {
+    "label": "Section progress",
+    "go_to": "Go to {{name}}"
   },
   "education": {
-    "title": "Work & Education",
-    "subtitle": "This is my professional background until today."
+    "title": "Track record",
+    "subtitle": "Education and experience, in order.",
+    "scroll_hint": "Scroll inside the list"
   },
   "service": {
-    "title": "My services",
-    "description": "I offer a wide range of services to meet your needs.",
-    "web_development": {
-      "title": "Web Development",
-      "description": "Creating responsive and modern websites."
-    },
-    "backend_development": {
-      "title": "BackEnd Development",
-      "description": "Building robust and scalable server-side applications."
-    },
-    "ux_ui_design": {
-      "title": "UX/UI Design",
-      "description": "Designing user-friendly interfaces."
-    }
+    "title": "What I do, backed by data",
+    "subtitle": "Each service with the share of my coding time it actually gets.",
+    "dataOnlyTitle": "The numbers behind my work",
+    "dataNote": "{{value}} of my measured time",
+    "dataStack": "{{value}} · measured with the tracker",
+    "source": "Source: WakaTime · @hilbrakaku"
   },
   "metrics": {
-    "yearsProgramming": "Years programming",
-    "hoursProgramming": "Programming hours",
-    "projectsParticipated": "Projects participated"
+    "hours": "Coding hours",
+    "years": "Years tracking",
+    "activeDays": "Days with code written",
+    "bestDay": "Best day: {{value}}",
+    "dailyAverage": "Average: {{value}} per day",
+    "os": "{{value}}",
+    "unavailable": "Activity metrics aren't available right now."
+  },
+  "slides": {
+    "hint": "Scroll",
+    "next": "Next section",
+    "prev": "Previous section",
+    "placeholder_body": "This slide will be completed in the next redesign phase."
+  },
+  "skills": {
+    "title": "These are my skills, measured with a tracker",
+    "placeholder": "Skills grid from the activity tracker — coming soon.",
+    "subtitle": "All my coding time tracked since {{since}}: {{hours}} hours across {{days}} active days.",
+    "unit": "{{value}}% of tracked time",
+    "item_label": "{{name}}: {{value}}% of tracked time",
+    "scale_note": "Bars compare against each other; the exact percentage is next to them.",
+    "toolsTitle": "Where I write that code",
+    "unavailable": "I couldn't load the skills from the tracker.",
+    "list_label": "Skills ordered by time spent"
   },
   "portfolio": {
-    "title": "Portfolio",
+    "title": "Projects",
+    "subtitle": "Filter by kind of work and swipe sideways.",
+    "filters_label": "Filter projects by category",
+    "carousel_label": "Projects carousel",
+    "carousel_role": "carousel",
+    "prev": "Previous project",
+    "next": "Next project",
+    "position": "{{current}} of {{total}}",
+    "results": "{{count}} projects",
+    "goTo": "Go to project {{index}}",
+    "empty_filter": "Nothing here yet.",
+    "show_all": "Show all",
     "categories": {
       "all": "All",
       "frontend": "Frontend",
@@ -66,26 +129,50 @@
       "visitProject": "Visit Project"
     }
   },
-  "stackChart": {
-    "title": "Most used languages",
-    "seriesName": "Usage (%)"
-  },
   "common": {
     "loading": "Loading...",
-    "error": "Error: {{message}}"
+    "loading_section": "Loading section",
+    "retry": "Retry"
   },
   "contact": {
-    "title": "Contact Me",
-    "subtitle": "It's time to know us. If you're interested in my work, write me and let's talk.",
     "name": "Your name",
     "email": "Email",
     "message": "Message",
     "submit": "Send",
-    "success": "Thank you! I’ll get back to you soon.",
+    "success": "Thank you! I'll get back to you soon.",
     "error": "Something went wrong. Please try again."
   },
+  "closing": {
+    "title_line1": "Let's talk",
+    "title_line2": "about what you want to build.",
+    "direct": "Direct contact",
+    "email_label": "Email",
+    "social_label": "Social",
+    "form_title": "Or write to me here",
+    "marquee": "Available for projects",
+    "availability": "Available for projects and consulting."
+  },
   "footer": {
-    "made_with": "Build from scratch with",
-    "by": "by Hilder Arrieta"
+    "made_with": "Made with love",
+    "by": "by me",
+    "built_with": "React, Vite, and MUI",
+    "source_code": "Source on GitHub",
+    "rights": "© {{year}} Hilder Arrieta",
+    "back_to_top": "Back to top"
+  },
+  "app": {
+    "load_error": "Could not load portfolio data. Check your connection and try again.",
+    "empty": "No portfolio data was found.",
+    "retry": "Retry"
+  },
+  "errors": {
+    "section_title": "This section could not be displayed",
+    "section_body": "Something failed while rendering it. The rest of the page still works.",
+    "app_title": "Something went wrong",
+    "app_body": "The page could not be rendered. Reloading usually fixes it.",
+    "reload": "Reload",
+    "not_found_title": "This page does not exist",
+    "not_found_body": "The link may be broken or the page may have been moved.",
+    "back_home": "Back to home"
   }
 }

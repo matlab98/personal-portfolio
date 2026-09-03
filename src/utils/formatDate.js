@@ -28,27 +28,41 @@ const whatHour = (tiempo) => {
 };
 
 
-  /**
-   * Converts days to years based on real calendar dates.
-   *
-   * @param {number} days
-   * @param {Date} startDate
-   * @returns {number}
-   */
-  const convertDaysToYearsByDate = (days, startDate = new Date()) => {
-    const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() + days);
+/**
+ * Años de registro a partir de días totales del tracker (WakaTime `range.days_*`).
+ * Usa 365.25 días/año para alinear con el rango `all_time` del payload.
+ *
+ * @param {number} days
+ * @returns {number|null} null si la entrada no es un número finito ≥ 0.
+ */
+const convertDaysToYearsByDate = (days) => {
+  if (!Number.isFinite(days) || days < 0) return null;
+  return Math.floor(days / 365.25);
+};
 
-    return endDate.getFullYear() - startDate.getFullYear();
-  };
+// Entero con o sin separadores de miles ("7", "1234", "1,234,567"), decimal
+// opcional, y la unidad de horas. Sin \b inicial: con él, "3.5 hrs" matcheaba
+// el "5" tras el punto en vez de las 3.5 horas.
+const HOURS_PATTERN = /(\d{1,3}(?:,\d{3})+|\d+)(?:\.(\d+))?\s*(?:hrs?|hours?|h)\b/i;
+
+/**
+ * Extrae las horas de un texto tipo WakaTime ("1,234 hrs 30 mins").
+ * Los decimales se redondean al entero más cercano: el consumidor es un contador
+ * de despliegue, y redondear deja menos error que truncar.
+ *
+ * @param {string} value
+ * @returns {number|null}
+ */
 const getHours = (value) => {
   if (typeof value !== 'string') return null;
 
-  const match = value.match(/\b(\d{1,3}(?:,\d{3})*)\s*(hrs?|hours?|h)\b/i);
+  const match = value.match(HOURS_PATTERN);
   if (!match) return null;
 
-  // Remove thousand separators and convert to number
-  return Number(match[1].replace(/,/g, ''));
+  const [, integerPart, decimalPart = '0'] = match;
+  const hours = Number(`${integerPart.replace(/,/g, '')}.${decimalPart}`);
+
+  return Number.isFinite(hours) ? Math.round(hours) : null;
 };
 
 const formatterDate = (tiempo) => {

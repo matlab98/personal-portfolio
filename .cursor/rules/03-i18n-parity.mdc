@@ -1,0 +1,21 @@
+---
+description: Paridad i18n — keys en en-us y es-co, cero copy quemada en JSX
+globs: src/locales/**,src/**/*.{jsx,js}
+alwaysApply: false
+---
+
+# i18n parity
+
+- Toda key nueva en **ambos** JSON: `src/locales/en-us/translation.json` y `src/locales/es-co/translation.json`.
+- UI: solo `t('clave')` / `useTranslation`. Nada de strings visibles hardcodeados.
+- URL `en-us`/`es-co` ↔ i18n `en-US`/`es-CO` — no mezclar casing.
+- Si falta traducción, no inventes copy en el componente: añade la key o pásalo a Back/i18n.
+- Suite: `src/test/i18n-parity.test.js`.
+
+```jsx
+// ❌ BAD
+<Typography>Contact me</Typography>
+
+// ✅ GOOD
+<Typography>{t('contact.title')}</Typography>
+```

@@ -1,57 +1,120 @@
 {
-  "greeting": "Hey, Yo soy FullStack Developer",
   "download_cv": "Descargar CV",
   "hire_me": "Contrátame",
   "hero": {
-    "titleLine1": "Deja de perder tiempo.",
-    "titleLine2": "Empieza a entregar valor.",
-    "subtitle": "Ingeniero full‑stack enfocado en UX clara, código mantenible y resultados medibles.",
-    "bullets": [
-      { "strong": "Alcance claro.", "rest": "Sin jerga. Qué se construye y por qué." },
-      { "strong": "Ejecución rápida.", "rest": "De idea a deploy con React moderno + APIs." },
-      { "strong": "Entrega confiable.", "rest": "Tests, observabilidad y performance desde el inicio." }
-    ]
+    "eyebrow": "Ingeniero fullstack",
+    "titleLine1": "Construyo software",
+    "titleLine2": "y mido lo que construyo.",
+    "subtitle": "Ingeniero fullstack: UX clara, código mantenible y resultados que se pueden verificar. Llevo cinco años registrando cada hora de código: lo que ves aquí abajo no es una lista de deseos, son datos.",
+    "cta_work": "Ver proyectos",
+    "cta_contact": "Hablemos",
+    "photo_placeholder": "Foto próximamente"
   },
   "nav": {
-    "brand": "Mi Portafolio",
-    "introduction": "Introducción",
-    "resume": "Resumen",
+    "brand": "Hilder Arrieta",
+    "primary": "Navegación principal",
+    "introduction": "Quién soy",
+    "about": "Quién soy",
+    "resume": "Trayectoria",
     "services": "Servicios",
+    "skills": "Habilidades",
     "portfolio": "Portafolio",
-    "statistics": "Estadísticas",
-    "contact": "Contacto"
+    "statistics": "Métricas",
+    "contact": "Contacto",
+    "closing": "Contacto",
+    "index": "Índice",
+    "index_title": "Índice de secciones",
+    "close_index": "Cerrar índice",
+    "language": "Cambiar idioma",
+    "languages": {
+      "en": "Inglés",
+      "es": "Español"
+    },
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "back_to_top": "Volver arriba",
+    "skip_to_content": "Saltar al contenido"
   },
-  "intro": {
-    "whoami": "Entonces, ¿quién soy?",
-    "description": "Soy un ingeniero apasionado por la tecnología, siempre buscando soluciones eficientes y creativas."
+  "theme": {
+    "to_light": "Activar modo claro",
+    "to_dark": "Activar modo oscuro"
+  },
+  "about": {
+    "title": "Quién soy",
+    "subtitle": "La versión corta, sin adornos.",
+    "p1": "Soy Hilder Arrieta, ingeniero fullstack. Trabajo el producto de punta a punta: el modelo de datos, la API, la interfaz y el despliegue. No entrego \"la mitad en el front y ya veremos el back\".",
+    "p2": "Mi centro de gravedad es C# y .NET del lado del servidor, y React con TypeScript del lado del cliente, con SQL en medio. Alrededor de eso: automatización de pruebas, contenedores y pipelines, porque el código que nadie puede desplegar no está terminado.",
+    "p3": "Y algo que casi nadie hace: mido mi propio trabajo. Cada hora de código desde abril de 2021 está registrada con un tracker, y esos números son los que ves en este portafolio. Si algo aquí dice \"cinco años de experiencia\", hay un JSON público que lo respalda.",
+    "facts": {
+      "role": "Rol",
+      "role_value": "Ingeniero fullstack",
+      "focus": "Foco",
+      "focus_value": ".NET · React · SQL · DevOps",
+      "tracking": "Midiendo desde",
+      "tracking_value": "Abril 2021",
+      "languages": "Idiomas",
+      "languages_value": "Español · Inglés"
+    },
+    "videoTitle": "Video de presentación",
+    "watch": "Ver la presentación",
+    "photo_placeholder": "Foto próximamente"
+  },
+  "progress": {
+    "label": "Progreso por secciones",
+    "go_to": "Ir a {{name}}"
   },
   "education": {
-    "title": "Trabajo & Educación",
-    "subtitle": "Esta es mi formación profesional hasta hoy."
+    "title": "Trayectoria",
+    "subtitle": "Formación y experiencia, en orden.",
+    "scroll_hint": "Desplázate dentro de la lista"
   },
   "service": {
-    "title": "Mis servicios",
-    "description": "Ofrezco una amplia gama de servicios para satisfacer sus necesidades.",
-    "web_development": {
-      "title": "Desarrollo Web",
-      "description": "Creando sitios web modernos y responsivos."
-    },
-    "backend_development": {
-      "title": "Desarrollo BackEnd",
-      "description": "Construyendo aplicaciones del lado del servidor robustas y escalables."
-    },
-    "ux_ui_design": {
-      "title": "Diseño UX/UI",
-      "description": "Diseñando interfaces amigables para el usuario."
-    }
+    "title": "Lo que hago, respaldado por datos",
+    "subtitle": "Cada servicio con la parte de mi tiempo de código que realmente le dedico.",
+    "dataOnlyTitle": "Los números de mi trabajo",
+    "dataNote": "{{value}} de mi tiempo medido",
+    "dataStack": "{{value}} · medido con el tracker",
+    "source": "Fuente: WakaTime · @hilbrakaku"
   },
   "metrics": {
-    "yearsProgramming": "Años programando",
-    "hoursProgramming": "Horas de programación",
-    "projectsParticipated": "Proyectos en los que he participado"
+    "hours": "Horas de código",
+    "years": "Años midiendo",
+    "activeDays": "Días con código escrito",
+    "bestDay": "Mejor día: {{value}}",
+    "dailyAverage": "Promedio: {{value}} al día",
+    "os": "{{value}}",
+    "unavailable": "Las métricas de actividad no están disponibles ahora."
+  },
+  "slides": {
+    "hint": "Desliza",
+    "next": "Siguiente sección",
+    "prev": "Sección anterior",
+    "placeholder_body": "Esta diapositiva se completa en la siguiente fase del rediseño."
+  },
+  "skills": {
+    "title": "Estas son mis habilidades, medidas con un tracker",
+    "placeholder": "Rejilla de habilidades con datos del tracker — próximamente.",
+    "subtitle": "Todo mi tiempo de código registrado desde {{since}}: {{hours}} horas en {{days}} días activos.",
+    "unit": "{{value}} % del tiempo registrado",
+    "item_label": "{{name}}: {{value}} % del tiempo registrado",
+    "scale_note": "Las barras comparan entre sí; el porcentaje exacto va al lado.",
+    "toolsTitle": "Dónde escribo ese código",
+    "unavailable": "No pude traer las habilidades del tracker.",
+    "list_label": "Habilidades ordenadas por tiempo de uso"
   },
   "portfolio": {
-    "title": "Portafolio",
+    "title": "Proyectos",
+    "subtitle": "Filtra por tipo de trabajo y desliza de lado.",
+    "filters_label": "Filtrar proyectos por categoría",
+    "carousel_label": "Carrusel de proyectos",
+    "carousel_role": "carrusel",
+    "prev": "Proyecto anterior",
+    "next": "Proyecto siguiente",
+    "position": "{{current}} de {{total}}",
+    "results": "{{count}} proyectos",
+    "goTo": "Ir al proyecto {{index}}",
+    "empty_filter": "Nada por aquí todavía.",
+    "show_all": "Ver todos",
     "categories": {
       "all": "Todos",
       "frontend": "Frontend",
@@ -66,17 +129,12 @@
       "visitProject": "Visitar Proyecto"
     }
   },
-  "stackChart": {
-    "title": "Lenguajes más usados",
-    "seriesName": "Uso (%)"
-  },
   "common": {
     "loading": "Cargando...",
-    "error": "Error: {{message}}"
+    "loading_section": "Cargando sección",
+    "retry": "Reintentar"
   },
   "contact": {
-    "title": "Contáctame",
-    "subtitle": "Es tiempo de conocernos. Si te interesa mi trabajo, escríbeme y hablamos de tu proyecto.",
     "name": "Tu nombre",
     "email": "Correo",
     "message": "Mensaje",
@@ -84,8 +142,37 @@
     "success": "¡Gracias! Te contactaré pronto.",
     "error": "Algo salió mal. Intenta de nuevo."
   },
+  "closing": {
+    "title_line1": "Hablemos",
+    "title_line2": "de lo que quieres construir.",
+    "direct": "Contacto directo",
+    "email_label": "Correo",
+    "social_label": "Redes",
+    "form_title": "O escríbeme aquí",
+    "marquee": "Disponible para proyectos",
+    "availability": "Disponible para proyectos y consultorías."
+  },
   "footer": {
-    "made_with": "Hecho con mucho",
-    "by": "por Hilder Arrieta"
+    "made_with": "Hecho con amor",
+    "by": "por mí",
+    "built_with": "React, Vite y MUI",
+    "source_code": "Código en GitHub",
+    "rights": "© {{year}} Hilder Arrieta",
+    "back_to_top": "Volver arriba"
+  },
+  "app": {
+    "load_error": "No se pudo cargar el portafolio. Revisa tu conexión e inténtalo de nuevo.",
+    "empty": "No se encontró información del portafolio.",
+    "retry": "Reintentar"
+  },
+  "errors": {
+    "section_title": "No se pudo mostrar esta sección",
+    "section_body": "Algo falló al renderizarla. El resto de la página sigue funcionando.",
+    "app_title": "Algo se rompió",
+    "app_body": "No se pudo renderizar la página. Recargar suele resolverlo.",
+    "reload": "Recargar",
+    "not_found_title": "Esta página no existe",
+    "not_found_body": "El enlace puede estar roto o la página pudo haber sido movida.",
+    "back_home": "Volver al inicio"
   }
 }

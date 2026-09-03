@@ -18,7 +18,9 @@ const {
   VITE_EMAIL_USER_ID,
   VITE_URL_BASE_STATS,
   VITE_URL_STATS_LANGUAGE,
-  VITE_URL_STATS_TOTAL
+  VITE_URL_STATS_TOTAL,
+  VITE_URL_STATS_EDITORS,
+  VITE_URL_STATS_OS
 } = import.meta.env;
 
 const emailKey = {
@@ -27,10 +29,13 @@ const emailKey = {
   userId: VITE_EMAIL_USER_ID,
 };
 
+// Son URLs de "share" revocables por el dueño: van en entorno, no en el código.
 const urlStats = {
     baseStatsUrl: VITE_URL_BASE_STATS,
     statsLanguage: VITE_URL_STATS_LANGUAGE,
-    statsTotal: VITE_URL_STATS_TOTAL
+    statsTotal: VITE_URL_STATS_TOTAL,
+    statsEditors: VITE_URL_STATS_EDITORS,
+    statsOs: VITE_URL_STATS_OS
 };
 
 export { defaultResponses, emailKey, urlStats };

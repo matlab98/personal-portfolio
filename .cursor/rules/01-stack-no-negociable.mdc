@@ -1,0 +1,25 @@
+---
+description: Stack no negociable del portfolio — Vite, MUI, RTK solo métricas, i18n, alias @/
+alwaysApply: true
+---
+
+# Stack no negociable
+
+- **Bundler:** Vite. Prohibido CRA / `react-scripts` / `eject`.
+- **Alias:** `@/` → `src/`.
+- **UI nueva:** solo MUI (`sx`, tema, tokens). No Ant Design, Bootstrap ni Emotion suelto en vistas nuevas.
+- **No cuarta lib** de UI, charts o motion. `framer-motion` solo donde ya existe; no el paquete `motion`.
+- **Estado:** RTK Query **solo métricas**; tema = Context; copy = i18n; CMS = Firestore.
+- **Copy:** todo string visible con `t('clave')` — cero texto quemado.
+- **Alcance:** portfolio personal, no plataforma. Complejidad extra = trade-off escrito.
+
+```js
+// ❌ BAD
+import { Button } from 'antd';
+process.env.REACT_APP_KEY;
+
+// ✅ GOOD
+import Button from '@mui/material/Button';
+import.meta.env.VITE_EMAIL_SERVICE_ID;
+t('nav.skills');
+```

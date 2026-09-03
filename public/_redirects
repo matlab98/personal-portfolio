@@ -1,0 +1,2 @@
+# SPA con BrowserRouter: sin esto, /es-co o /en-us en frío devuelven 404 en Netlify.
+/*  /index.html  200

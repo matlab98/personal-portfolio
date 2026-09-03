@@ -1,69 +1,77 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { urlStats } from "@/config/config";
 
+/**
+ * Métricas públicas del tracker (WakaTime "share"). Cuatro endpoints, un solo
+ * contrato de salida:
+ *
+ *   { status: true, statusDescription: string, data: <payload.data> }
+ *
+ * Los cuatro JSON llegan envueltos en `{ data: ... }`, así que el desenvuelto
+ * ocurre aquí y el consumidor siempre lee `result.data`. Antes `queryOne`
+ * devolvía el sobre completo y los otros tres el contenido: la forma dependía
+ * del endpoint y eso lo descubría el componente.
+ *
+ * Qué trae cada `data`:
+ *  - queryOne   → editores: [{ name, percent, color }]
+ *  - queryTwo   → lenguajes: [{ name, percent, color }] (no hay `total_seconds`
+ *                 ni `text`; `percent` es porcentaje del total `all_time`)
+ *  - queryThree → sistemas operativos: [{ name, percent, color }]
+ *  - queryFour  → totales: { grand_total, range, best_day, ... }
+ */
+
+const OK_DESCRIPTION = "Query completed successfully.";
+
+/** Un solo desenvuelto para los cuatro endpoints. */
+const unwrap = (response) => ({
+  status: true,
+  statusDescription: OK_DESCRIPTION,
+  data: response?.data,
+});
+
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: urlStats.baseStatsUrl,
-  }), // Cambia esto por la URL de tu API
+  }),
   endpoints: (builder) => ({
+    // Editores / IDE.
     queryOne: builder.query({
       query: () => ({
-        url: "f6ec4610-5ec8-4e0a-b40d-aec4d11abefd.json", // Cambia esto por el endpoint que necesites
+        url: urlStats.statsEditors,
         method: "GET",
       }),
-      transformResponse: (response) => {
-        return {
-          status: true,
-          statusDescription: "Query completed successfully.",
-          data: response,
-        };
-      },
+      transformResponse: unwrap,
       transformErrorResponse: (response) => response?.data,
       extraOptions: { maxRetries: 0 },
     }),
+    // Lenguajes.
     queryTwo: builder.query({
       query: () => ({
-        url: urlStats.statsLanguage, // Cambia esto por el endpoint que necesites
+        url: urlStats.statsLanguage,
         method: "GET",
       }),
-      transformResponse: (response) => {
-        return {
-          status: true,
-          statusDescription: "Query completed successfully.",
-          data: response.data,
-        };
-      },
+      transformResponse: unwrap,
       transformErrorResponse: (response) => response?.data,
       extraOptions: { maxRetries: 0 },
     }),
+    // Sistemas operativos.
     queryThree: builder.query({
       query: () => ({
-        url: "b4730f03-b81c-464a-953c-567e27e89a34.json", // Cambia esto por el endpoint que necesites
+        url: urlStats.statsOs,
         method: "GET",
       }),
-      transformResponse: (response) => {
-        return {
-          status: true,
-          statusDescription: "Query completed successfully.",
-          data: response.data,
-        };
-      },
+      transformResponse: unwrap,
       transformErrorResponse: (response) => response?.data,
       extraOptions: { maxRetries: 0 },
     }),
+    // Totales del rango completo.
     queryFour: builder.query({
       query: () => ({
-        url: urlStats.statsTotal, // Cambia esto por el endpoint que necesites
+        url: urlStats.statsTotal,
         method: "GET",
       }),
-      transformResponse: (response) => {
-        return {
-          status: true,
-          statusDescription: "Query completed successfully.",
-          data: response.data,
-        };
-      },
+      transformResponse: unwrap,
       transformErrorResponse: (response) => response?.data,
       extraOptions: { maxRetries: 0 },
     }),

@@ -1,0 +1,19 @@
+---
+description: Gates QA F10 — build verde, layout-contract, sin secretos en log; no aprobar merge si fallan
+alwaysApply: false
+---
+
+# QA gates (F10)
+
+Antes de dar por listo un cambio que toque home/slides/contacto/deps:
+
+1. **Build:** `npm run build` (o el script del repo) en verde.
+2. **Tests relevantes:** `layout-contract.test.js`, `useCarousel.test.js`, `i18n-parity.test.js` si aplica.
+3. **Checklist manual** (si toca UX): snap solo desktop ≥900px; móvil scroll normal; contacto sin tel/ubicación; carrusel respeta reduced motion.
+4. **Secretos:** no `console.log` de `emailKey`, env ni tokens. Bloqueante.
+5. **i18n:** no keys crudas ni un solo idioma.
+6. Estado vivo: `docs/ESTADO-COORDINACION.md`.
+
+No apruebes merge con strings quemados, pipeline verde falso (test step sin runner), o privacidad rota.
+
+Informe: severidad · pasos · esperado · actual · archivo probable.

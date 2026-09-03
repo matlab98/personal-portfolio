@@ -1,25 +1,28 @@
-import React, { Suspense } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Suspense } from 'react';
 
-const DefaultFallback = () => (
-  <Box 
-    sx={{ 
-      minHeight: '200px', 
-      display: 'flex', 
-      alignItems: 'center', 
-      justifyContent: 'center',
-      width: '100%'
-    }}
-  >
-    <CircularProgress />
-  </Box>
-);
+import ErrorBoundary from './ErrorBoundary';
+import SectionSkeleton from '@/components/skeletons/SectionSkeleton';
 
-const LazySectionWrapper = ({ children, fallback }) => (
-  <Suspense fallback={fallback || <DefaultFallback />}>
-    {children}
-  </Suspense>
-);
+/**
+ * Suspense por sección con skeleton tipado. `fullSlide` aplica 100dvh solo en desktop (modo snap).
+ *
+ * @param {string} [skeleton] variante de SectionSkeleton
+ * @param {boolean} [fullSlide] min-height 100dvh en el fallback
+ */
+const LazySectionWrapper = ({ children, fallback, skeleton, fullSlide = false }) => {
+  const resolvedFallback =
+    fallback ??
+    (skeleton ? (
+      <SectionSkeleton variant={skeleton} fullSlide={fullSlide} />
+    ) : (
+      <SectionSkeleton variant="text" fullSlide={fullSlide} />
+    ));
 
-export default LazySectionWrapper; 
+  return (
+    <ErrorBoundary scope="section">
+      <Suspense fallback={resolvedFallback}>{children}</Suspense>
+    </ErrorBoundary>
+  );
+};
+
+export default LazySectionWrapper;

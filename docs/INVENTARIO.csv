@@ -1,0 +1,45 @@
+ID;Tipo;Título;Descripción;Severidad;Prioridad;Archivo o componente;Agente responsable;Estado;Verificación;Fase
+HU-01;HU;Navegación tipo diapositiva;Como visitante quiero pasar de sección en sección a pantalla completa sin ver scrollbar vertical para una experiencia tipo presentación.;N/A;Alta;src/pages/Home.jsx;Front;Resuelto;Slide+SlideViewport, snap solo ≥md 900px;F1
+HU-02;HU;Indicador lateral de sección;Como visitante quiero una señal discreta de en qué diapositiva estoy para orientarme sin saturar el navbar.;N/A;Alta;src/components/SlideProgressRail.jsx;Front;Resuelto;Rail+barra superior;F2
+HU-03;HU;Navbar con Índice;Como visitante quiero abrir un índice de secciones desde el navbar en lugar de seis links inline en desktop.;N/A;Media;src/components/Navbar/Navbar.jsx;Front;Resuelto;SlideIndex overlay;F2
+HU-04;HU;Skeletons por tipo de sección;Como visitante quiero estados de carga que respeten la altura de la diapositiva para que el snap no salte al cargar chunks lazy.;N/A;Alta;src/components/*Skeleton*;Front;Resuelto;Skeletons ≥100dvh + LazySectionWrapper;F3
+HU-05;HU;Carrusel horizontal de proyectos;Como visitante quiero filtrar proyectos por tipo y desplazarlos horizontalmente como un carrusel.;N/A;Alta;src/features/portfolio/project.jsx;Front;Resuelto;ProjectCarousel + filtros;F7
+HU-06;HU;20 habilidades medidas con tracker;Como visitante quiero ver un listado de ~20 lenguajes con indicador simple y porcentaje real del tracker WakaTime.;N/A;Alta;src/features/skills/;Fullstack;Resuelto;SkillsList cableado en Home;F6
+HU-07;HU;Servicios fusionados con métricas;Como visitante quiero entender qué ofrezco y cómo mido mi trabajo en una sola diapositiva coherente.;N/A;Alta;src/containers/ServicesMetricsSection.jsx;Fullstack;Resuelto;ServicesMetricsSection;F5
+HU-08;HU;Quién soy mejorado;Como visitante quiero conocer mejor a Hilder (fullstack, C#/JS/TS, tracker) con espacio reservado para foto.;N/A;Media;src/features/main/Dash.jsx;Front;Resuelto;Hero/about F8 (foto asset aún ISS-04);F8
+HU-09;HU;Contacto y footer como cierre;Como visitante quiero una diapositiva final con contacto fuerte, redes (X, LinkedIn, GitHub) y pie inspirado en referencias premium.;N/A;Alta;src/features/touch/Touch.jsx;Front;Resuelto;Touch cierre + footer, sin teléfono/ubicación;F9
+HU-10;HU;Paleta indigo/violeta;Como visitante quiero una identidad visual morada/indigo coherente en claro y oscuro con contraste accesible.;N/A;Alta;src/config/tokens.js;Front;Resuelto;tokens.js indigo + build;F0
+HU-11;HU;Dos idiomas completos;Como visitante quiero toda la UI en inglés o español según la URL sin strings quemados.;N/A;Alta;src/locales/;Front;En curso;Paridad keys + QA F10 manual;F10
+HU-12;HU;Inventario trazable de cambios;Como dueño quiero un Excel/CSV con cada HU, bug e issue para seguimiento.;N/A;Media;docs/INVENTARIO.csv;QA;Resuelto;Este archivo;Auditoría
+BUG-01;Bug;Sin ErrorBoundary;Un throw en cualquier sección dejaba la página en blanco completa.;Bloqueante;Alta;src/components/ErrorBoundary.jsx;Fullstack;Resuelto;Componente + LazySectionWrapper;Correcciones
+BUG-02;Bug;ErrorBoundary fuera del ThemeProvider;La pantalla de error global usaba tema MUI por defecto.;Serio;Media;src/main.jsx;Front;Resuelto;ErrorBoundary dentro AppThemeProvider;Design system
+BUG-03;Bug;TypeError en stats.jsx;Si solo fallaba queryFour, error.message sobre undefined tumba métricas.;Bloqueante;Alta;src/features/metric/containers/stats.jsx;Back;Resuelto;isError por query;Correcciones
+BUG-04;Bug;console.log emailKey;Credenciales EmailJS visibles en consola del navegador.;Bloqueante;Alta;src/features/touch/Touch.jsx;Back;Resuelto;Eliminado log;Correcciones
+BUG-05;Bug;Keys i18n metrics.title;Se pintaban keys crudas en la UI de métricas.;Serio;Media;src/locales/;Front;Resuelto;Keys añadidas;Correcciones
+BUG-06;Bug;Grid MUI v5 en MUI 7;Tarjetas de portafolio ignoraban columnas responsive.;Serio;Alta;src/features/portfolio/project.jsx;Front;Resuelto;Grid size API;Correcciones
+BUG-07;Bug;IDs de ancla duplicados;getElementById tomaba el contenedor equivocado al hacer scroll.;Serio;Media;App.jsx + features;Front;Resuelto;IDs solo en Section;Correcciones
+BUG-08;Bug;App map duplicaba página;Varios documentos Firestore repetían toda la home.;Serio;Alta;src/App.jsx;Fullstack;Resuelto;dato[0] único;Correcciones
+BUG-09;Bug;Navbar scroll a la nada;Botones a secciones que el CMS no trajo no hacían nada.;Serio;Media;Navbar + Home;Front;Resuelto;sections derivadas;Correcciones
+BUG-10;Bug;Footer icono Instagram para Facebook;Icono y aria-label incorrectos + @ant-design/icons vetado.;Serio;Media;src/features/footer/footer.jsx;Front;Resuelto;Iconos MUI;Correcciones
+BUG-11;Bug;Inputs disabled rompen EmailJS;FormData no incluye campos disabled durante envío.;Serio;Alta;src/features/touch/Touch.jsx;Front;Resuelto;No disable inputs;Design system
+BUG-12;Bug;getHours pierde horas;Enteros 4+ dígitos o decimales mal parseados.;Serio;Media;src/utils/formatDate.js;Back;Resuelto;90 assertions arnés;Tests
+BUG-13;Bug;convertDaysToYearsByDate NaN;undefined→NaN y contaba años calendario falsos.;Serio;Media;src/utils/formatDate.js;Back;Resuelto;Años cumplidos + null;Tests
+BUG-14;Bug;localStorage corrupto;JSON.parse sin try tumbaba ThemeContext.;Serio;Media;src/hooks/useLocalStorage.js;Front;Resuelto;try/catch;Tests
+BUG-15;Bug;Tests Touch falsos;Touch.test.js mocha/CRA no corría.;Serio;Baja;src/features/touch/__tests__;QA;Resuelto;Eliminado + Vitest config;Tests
+BUG-16;Bug;useFetch.test.js vacío;Vitest run fallaría en archivo vacío.;Menor;Baja;src/hooks/__tests__/;QA;Resuelto;Archivo eliminado;Tests
+BUG-17;Bug;404 deep link Netlify;SPA sin redirect devolvía 404 en /es-co frío.;Bloqueante;Alta;public/_redirects;DevOps;Resuelto;Copiado a dist;Correcciones
+BUG-18;Bug;CI invocaba scripts inexistentes;npm test react-scripts y npm run deploy.;Serio;Media;.github/workflows/main.yml;DevOps;Resuelto;install lint build;Correcciones
+ISS-01;Issue;Modo oscuro por defecto;El usuario pidió arrancar siempre en oscuro sin prefers-color-scheme.;N/A;Alta;src/context/ThemeContext.jsx;Front;Resuelto;DEFAULT_MODE dark;F0
+ISS-02;Issue;Tercera métrica 945 días;Reemplazar 45 inventado por días con código del tracker.;N/A;Alta;MetricDashboard;Fullstack;Resuelto;range.days_minus_holidays;F4
+ISS-03;Issue;Red X en lugar de Facebook;Mapa de redes alineado a links reales.;N/A;Media;footer.jsx;Front;Resuelto;X/LinkedIn/GitHub en Touch;F9
+ISS-04;Issue;Placeholder foto hero;Reservar espacio visual sin asset aún.;N/A;Media;Dash.jsx;Front;Pendiente;Espacio reservado, falta asset;F8
+ISS-05;Issue;Barras logarítmicas habilidades;Datos van de 25% a 0.14% — barra lineal ilegible.;N/A;Alta;skillsFromWakaTime.js;Front;Resuelto;skillsFromWakaTime barra log;F6
+ISS-06;Issue;Subagentes Cursor bloqueados;Varios workers fallaron por invoice/unpaid o usage limit.;N/A;Alta;Cursor Dashboard;DevOps;Pendiente;824838a5 087ae766 5d17d1be error;Coordinación
+TEC-01;Deuda técnica;npm install bloqueado;UNABLE_TO_VERIFY_LEAF_SIGNATURE impide Vitest/ESLint local.;Serio;Alta;package.json;DevOps;Pendiente;Certificado npm;Tests
+TEC-02;Deuda técnica;Dos lockfiles;package-lock.json y pnpm-lock.yaml coexisten.;Menor;Media;raíz;DevOps;Pendiente;Elegir gestor;DevOps
+TEC-03;Deuda técnica;formatDate funciones muertas;formatterDate/whatHour sin consumidor + días hardcodeados.;Menor;Baja;src/utils/formatDate.js;Back;Pendiente;Reporte tests;Tests
+TEC-04;Deuda técnica;defaultResponses sin i18n;String español en config.js.;Menor;Baja;src/config/config.js;Back;Pendiente;—;Back
+TEC-05;Deuda técnica;og:image profile.jpg;Meta SEO apunta a imagen inexistente.;Menor;Media;index.html;DevOps;Pendiente;—;DevOps
+TEC-06;Deuda técnica;Share links WakaTime;URLs revocables — mover todas a .env.;Serio;Media;config.js + .env.*;Back;Resuelto;VITE_URL_STATS_*;F0
+TEC-07;Deuda técnica;Bundle primer paint +20kb gzip;Trade-off manualChunks vs cacheabilidad.;Menor;Baja;vite.config.js;DevOps;Resuelto;904kB→vendors;Tests
+TEC-08;Deuda técnica;Vitest no ejecutado con runner real;90 assertions solo en arnés Node.;Serio;Media;src/test/;QA;Pendiente;npm install;Tests

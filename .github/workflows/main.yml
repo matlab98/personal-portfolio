@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   pull_request:
@@ -8,28 +8,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-      
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18.13.0'
+        node-version: '20'
+        cache: 'npm'
 
+    # npm ci cuando el lockfile vuelva a estar en sync con package.json.
     - name: Install dependencies
-      run: npm install
+      run: npm install --no-audit --no-fund
 
-    - name: Run tests
-      run: npm test
+    - name: Lint
+      run: npm run lint
 
     - name: Build
       run: npm run build
 
-    - name: Deploy
-      env:
-        NODE_ENV: production
-        DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
-      run: npm run deploy
+    # Vitest no se pudo instalar en local (registry inalcanzable); el runner de CI sí
+    # tiene red, así que esta es la primera ejecución real de la suite.
+    - name: Test
+      run: npm test

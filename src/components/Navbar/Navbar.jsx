@@ -1,141 +1,139 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import MenuBookRoundedIcon from '@mui/icons-material/MenuBookRounded';
 import { useTranslation } from 'react-i18next';
-import ThemeToggle from '../ThemeToggle';
 
-const Navbar = () => {
+import LanguageToggle from '@/components/LanguageToggle';
+import SlideIndex from '@/components/SlideIndex';
+import ThemeToggle from '@/components/ThemeToggle';
+import useActiveSection from '@/hooks/useActiveSection';
+import { scrollToTop } from '@/utils/scroll';
+
+/**
+ * Barra fija: marca + idioma + tema + índice. Sin links inline ni drawer.
+ *
+ * @param {{ id: string, labelKey?: string }[]} sections
+ * @param {{ email?: string, social?: object }} [contact]
+ */
+const Navbar = ({ sections = [], contact }) => {
   const { t } = useTranslation();
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [indexOpen, setIndexOpen] = useState(false);
 
-  // Nombres de las secciones y sus IDs correspondientes para los enlaces de navegación
-  const sections = [
-    { title: t('nav.introduction'), id: 'introduction' },
-    { title: t('nav.resume'), id: 'resume' },
-    { title: t('nav.services'), id: 'services' },
-    { title: t('nav.portfolio'), id: 'portfolio' },
-    { title: t('nav.statistics'), id: 'statistics' },
-    { title: t('nav.contact'), id: 'contact' },
-  ];
+  const sectionIds = sections.map((section) => section.id).filter(Boolean);
+  useActiveSection(sectionIds);
 
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
+  const handleBrandClick = (event) => {
+    event.preventDefault();
+    setIndexOpen(false);
+    scrollToTop();
   };
-
-  const handleScrollToSection = (sectionId) => {
-    const sectionElement = document.getElementById(sectionId);
-    if (sectionElement) {
-      sectionElement.scrollIntoView({ behavior: 'smooth' });
-    }
-    setMobileOpen(false); // Cerrar drawer después de hacer clic
-  };
-
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <List>
-        {sections.map((section) => (
-          <ListItem key={section.id} disablePadding>
-            <ListItemButton 
-              onClick={() => handleScrollToSection(section.id)}
-              sx={{ textAlign: 'center' }}
-            >
-              <ListItemText primary={section.title} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
 
   return (
-    <AppBar position="fixed" component="nav">
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        {/* Brand (left) */}
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flex: { xs: '1 1 auto', md: '0 0 auto' } }}
-        >
-          <a 
-            href="#" 
-            onClick={(e) => { 
-              e.preventDefault(); 
-              window.scrollTo({ top: 0, behavior: 'smooth' }); 
-            }} 
-            style={{ textDecoration: 'none', color: 'inherit' }}
-          >
-            {t('nav.brand')}
-          </a>
-        </Typography>
-
-        {/* Desktop Navigation: tabs centered */}
-        <Box
-          sx={{
-            display: { xs: 'none', md: 'flex' },
-            alignItems: 'center',
-            flex: '1 1 auto',
-            justifyContent: 'center',
-            gap: 1,
-          }}
-        >
-          {sections.map((section) => (
-            <Button
-              key={section.id}
-              color="inherit"
-              onClick={() => handleScrollToSection(section.id)}
-              sx={{ textTransform: 'none' }}
-            >
-              {section.title}
-            </Button>
-          ))}
-        </Box>
-
-        {/* Desktop right actions */}
-        <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-          <ThemeToggle />
-        </Box>
-
-        {/* Mobile Navigation */}
-        <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 1 }}>
-          <ThemeToggle />
-          <IconButton 
-            color="inherit" 
-            aria-label="open drawer" 
-            edge="start" 
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Box>
-      </Toolbar>
-      
-      {/* Mobile Drawer */}
-      <Drawer
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        sx={{
-          display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
-        }}
+    <>
+      <AppBar
+        position="fixed"
+        component="header"
+        data-qa="navbar"
+        sx={(theme) => ({
+          height: theme.tokens.layout.headerHeight,
+          backgroundColor: `${theme.palette.background.paper}D1`,
+          backdropFilter: 'blur(12px)',
+          borderBottom: `1px solid ${theme.palette.divider}`,
+          boxShadow: 'none',
+        })}
       >
-        {drawer}
-      </Drawer>
-    </AppBar>
+        <Toolbar
+          sx={(theme) => ({
+            gap: 1,
+            minHeight: theme.tokens.layout.headerHeight,
+            px: { xs: 1.5, sm: 2, md: 3 },
+          })}
+        >
+          <Typography variant="h6" component="p" sx={{ flex: 1, minWidth: 0 }}>
+            <Box
+              component="a"
+              href="#"
+              onClick={handleBrandClick}
+              aria-label={t('nav.back_to_top')}
+              sx={(theme) => ({
+                color: 'inherit',
+                textDecoration: 'none',
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                '&:focus-visible': {
+                  outline: `2px solid ${theme.tokens.surface.outlineStrong}`,
+                  outlineOffset: 2,
+                  borderRadius: `${theme.tokens.radius.sm}px`,
+                },
+              })}
+            >
+              {t('nav.brand')}
+            </Box>
+          </Typography>
+
+          <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexShrink: 0 }}>
+            <LanguageToggle />
+            <ThemeToggle />
+            {sections.length > 0 && (
+              <Button
+                color="inherit"
+                startIcon={<MenuBookRoundedIcon />}
+                onClick={() => setIndexOpen(true)}
+                aria-haspopup="dialog"
+                aria-expanded={indexOpen}
+                aria-controls="slide-index-title"
+                sx={(theme) => ({
+                  fontWeight: 600,
+                  display: { xs: 'none', sm: 'inline-flex' },
+                  '&:focus-visible': {
+                    outline: `2px solid ${theme.tokens.surface.outlineStrong}`,
+                    outlineOffset: 2,
+                  },
+                })}
+              >
+                {t('nav.index')}
+              </Button>
+            )}
+            {sections.length > 0 && (
+              <Button
+                color="inherit"
+                onClick={() => setIndexOpen(true)}
+                aria-label={t('nav.index')}
+                aria-haspopup="dialog"
+                aria-expanded={indexOpen}
+                aria-controls="slide-index-title"
+                sx={(theme) => ({
+                  minWidth: theme.tokens.layout.touchTarget,
+                  px: 1,
+                  display: { xs: 'inline-flex', sm: 'none' },
+                  '&:focus-visible': {
+                    outline: `2px solid ${theme.tokens.surface.outlineStrong}`,
+                    outlineOffset: 2,
+                  },
+                })}
+              >
+                <MenuBookRoundedIcon />
+              </Button>
+            )}
+          </Stack>
+        </Toolbar>
+      </AppBar>
+
+      <SlideIndex
+        open={indexOpen}
+        onClose={() => setIndexOpen(false)}
+        sections={sections}
+        contact={contact}
+      />
+    </>
   );
 };
 
-export default Navbar; 
+export default Navbar;

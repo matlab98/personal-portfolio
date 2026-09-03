@@ -1,45 +1,41 @@
-// Guardar un ítem en localStorage
+// Envoltorio de localStorage: ninguna operación de storage debe tumbar la UI.
+// En modo privado, con cuota llena o con cookies bloqueadas, el acceso lanza.
+
 function setLocalStorageItem(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Cuota llena o storage bloqueado (modo privado): no es motivo para tumbar la UI.
+  }
 }
 
-// Obtener un ítem de localStorage
 function getLocalStorageItem(key) {
-  const value = localStorage.getItem(key);
-  return value ? JSON.parse(value) : null;
+  try {
+    const value = localStorage.getItem(key);
+    // Un '' crudo no es JSON válido; se trata como ausente igual que null.
+    if (value === null || value === '') return null;
+
+    return JSON.parse(value);
+  } catch {
+    // Valor corrupto o sin comillas (themeMode = dark): se trata como ausente.
+    return null;
+  }
 }
 
-// Eliminar un ítem de localStorage
 function removeLocalStorageItem(key) {
-  localStorage.removeItem(key);
+  try {
+    localStorage.removeItem(key);
+  } catch {
+    // Nada que borrar si el storage no está disponible.
+  }
 }
 
-// Limpiar todo el localStorage
 function clearLocalStorage() {
-  localStorage.clear();
-}
-
-function isUserActive() {
-  const lastActiveTime = getLocalStorageItem("lastActiveTime");
-  const currentTime = new Date().getTime();
-
-  // Si han pasado más de 30 minutos (1800000 milisegundos)
-  return lastActiveTime && currentTime - lastActiveTime < 1800000;
-}
-
-// Actualizar tiempo de última actividad
-function updateLastActiveTime() {
-  setLocalStorageItem("lastActiveTime", new Date().getTime());
-}
-
-// Guardar preferencias del usuario en localStorage
-function saveUserPreferences(preferences) {
-  setLocalStorageItem("userPreferences", preferences);
-}
-
-// Obtener preferencias del usuario
-function getUserPreferences() {
-  return getLocalStorageItem("userPreferences") || {};
+  try {
+    localStorage.clear();
+  } catch {
+    // Idem: el storage inaccesible ya está, de hecho, vacío.
+  }
 }
 
 export {
@@ -47,8 +43,4 @@ export {
   getLocalStorageItem,
   removeLocalStorageItem,
   clearLocalStorage,
-  isUserActive,
-  updateLastActiveTime,
-  saveUserPreferences,
-  getUserPreferences,
 };

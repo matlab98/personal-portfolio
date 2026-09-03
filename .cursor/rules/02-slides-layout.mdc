@@ -1,0 +1,17 @@
+---
+description: Layout diapositivas — snap solo desktop ≥md, fit contain/scroll, privacidad contacto
+globs: src/pages/Home.jsx,src/components/Slide*.jsx,src/config/createAppTheme.js,src/config/tokens.js
+alwaysApply: false
+---
+
+# Layout diapositivas
+
+Docs: `docs/DISENO-SLIDES.md`, `docs/ESTADO-COORDINACION.md`.
+
+- **7 slides** en `Home.jsx`: hero · introduction · services · skills · portfolio · resume · contact.
+- **Snap solo ≥ md (900px).** Base: sin snap; móvil/tablet = scroll normal, altura natural.
+- **`fit`:** `contain` (cabe en viewport md+) o `scroll` (cuerpo con overflow solo donde aplica; bajo md, overflow visible).
+- **Alias:** `#statistics` → `#skills` en `utils/scroll.js`.
+- **Privacidad:** no revelar teléfono ni ubicación en UI (Touch, hero, índice, footer integrado).
+- **Motion:** respetar `prefers-reduced-motion`; no secuestrar scroll del documento con contenedor propio.
+- Tests: `src/test/layout-contract.test.js`.
